@@ -4,6 +4,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using SementesApplication;
+using Microsoft.EntityFrameworkCore;
+using SementesApplication.Data;
 
 namespace SementesApplication
 {
@@ -20,6 +22,9 @@ namespace SementesApplication
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddRazorPages();
+
+            services.AddDbContext<SementesApplicationContext>(options =>
+                    options.UseSqlServer(Configuration.GetConnectionString("SementesApplicationContext")));
 
             
         }

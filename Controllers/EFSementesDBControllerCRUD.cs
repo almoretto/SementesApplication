@@ -20,7 +20,7 @@ namespace SementesApplication
         {
             return _dBContext.Actions.ToList();
         }
-        public List<TeamAction> FetchTeamActions()
+        public List<Action> FetchTeamActions()
         {
             return _dBContext.TeamActions.ToList();
         }
@@ -80,7 +80,7 @@ namespace SementesApplication
             _dBContext.Actions.Remove(action);
             _dBContext.SaveChanges();
         }
-        public void RemoveTeamAction(TeamAction teamAction)
+        public void RemoveTeamAction(Action teamAction)
         {
             _dBContext.TeamActions.Remove(teamAction);
             _dBContext.SaveChanges();

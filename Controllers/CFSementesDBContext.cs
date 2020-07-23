@@ -16,7 +16,7 @@ namespace SementesApplication
         public DbSet<Address> Adresses { get; set; }
         public DbSet<City> Cities { get; set; }
         public DbSet<TeamSchedule> TeamSchedules { get; set; }
-        public DbSet<TeamAction> TeamActions { get; set; }
+        public DbSet<Action> TeamActions { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

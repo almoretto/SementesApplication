@@ -26,28 +26,9 @@ namespace SementesApplication
         //Navigation
         public virtual Address Address { get; set; } //Navigation 1 to 1 with address
         public virtual ICollection<TeamSchedule> TeamSchedules { get; set; } //Navigation 1 volunteer has many TeamSchedule
-        public virtual TeamAction TeamAction { get; set; }
+        public virtual Action TeamAction { get; set; }
 
-        public Volunteer(int volunteerId, string volunteerDocCPF, string volunteerDocRG, string volunteerName,
-            DateTime volunteerBirthDate, int volunteerAge, string volunteerResumee, int addressId, string volunteerPhone,
-            bool volunteerMessagePhone, string volunteerEmail, string volunteerSocialMidiaProfile, bool volunteerActive)
-        {
-            VolunteerID = volunteerId;
-            VolunteerDocCPF = volunteerDocCPF;
-            VolunteerDocRG = volunteerDocRG;
-            VolunteerName = volunteerName;
-            VolunteerBirthDate = volunteerBirthDate;
-            VolunteerAge = volunteerAge;
-            VolunteerResumee = volunteerResumee;
-            AddressID = addressId;
-            VolunteerPhone = volunteerPhone;
-            VolunteerMessagePhone = volunteerMessagePhone;
-            VolunteerEmail = volunteerEmail;
-            VolunteerSocialMidiaProfile = volunteerSocialMidiaProfile;
-            VolunteerActive = volunteerActive;
-            AgeCalculator();
-        }
-
+       
         private void AgeCalculator()
         {
             int age = DateTime.Now.Year - VolunteerBirthDate.Year;

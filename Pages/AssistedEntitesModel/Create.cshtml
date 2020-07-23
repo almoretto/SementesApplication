@@ -1,0 +1,74 @@
+﻿@page
+@model SementesApplication.Pages.AssistedEntitesModel.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>AssistedEntities</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="AssistedEntities.AssistedEntitiesName" class="control-label"></label>
+                <input asp-for="AssistedEntities.AssistedEntitiesName" class="form-control" />
+                <span asp-validation-for="AssistedEntities.AssistedEntitiesName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AssistedEntities.AssistedEntitiesVisitDay" class="control-label"></label>
+                <select asp-for="AssistedEntities.AssistedEntitiesVisitDay" class="form-control"></select>
+                <span asp-validation-for="AssistedEntities.AssistedEntitiesVisitDay" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AssistedEntities.AssistedEntitiesVisitTime" class="control-label"></label>
+                <input asp-for="AssistedEntities.AssistedEntitiesVisitTime" class="form-control" />
+                <span asp-validation-for="AssistedEntities.AssistedEntitiesVisitTime" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AssistedEntities.AssistedEntitiesVisitDuration" class="control-label"></label>
+                <input asp-for="AssistedEntities.AssistedEntitiesVisitDuration" class="form-control" />
+                <span asp-validation-for="AssistedEntities.AssistedEntitiesVisitDuration" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AssistedEntities.AssistedEntitiesScale" class="control-label"></label>
+                <select asp-for="AssistedEntities.AssistedEntitiesScale" class="form-control"></select>
+                <span asp-validation-for="AssistedEntities.AssistedEntitiesScale" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AssistedEntities.AssistedEntitiesMaxVolunteer" class="control-label"></label>
+                <select asp-for="AssistedEntities.AssistedEntitiesMaxVolunteer" class="form-control"></select>
+                <span asp-validation-for="AssistedEntities.AssistedEntitiesMaxVolunteer" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AssistedEntities.AssistedEntitiesContact" class="control-label"></label>
+                <input asp-for="AssistedEntities.AssistedEntitiesContact" class="form-control" />
+                <span asp-validation-for="AssistedEntities.AssistedEntitiesContact" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AssistedEntities.ContactPhone" class="control-label"></label>
+                <input asp-for="AssistedEntities.ContactPhone" class="form-control" />
+                <span asp-validation-for="AssistedEntities.ContactPhone" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AssistedEntities.ContactEmail" class="control-label"></label>
+                <input asp-for="AssistedEntities.ContactEmail" class="form-control" />
+                <span asp-validation-for="AssistedEntities.ContactEmail" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

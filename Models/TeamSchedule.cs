@@ -17,12 +17,6 @@ namespace SementesApplication
         //Navigations
         public virtual Volunteer Volunteer { get; set; } //Navigation 1 volunteer has many TeamSchedule
 
-        public TeamSchedule(int teamScheduleId, int volunteerId, DateTime teamScheduleDate, VisitPeriod teamSchedulePeriod)
-        {
-            TeamScheduleID = teamScheduleId;
-            VolunteerId = volunteerId;
-            TeamScheduleDate = teamScheduleDate;
-            TeamSchedulePeriod = teamSchedulePeriod;
-        }
+       
     }
 }

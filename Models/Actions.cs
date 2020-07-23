@@ -18,17 +18,8 @@ namespace SementesApplication
 
         //Navigations
         public virtual AssistedEntities AssistedEntities { get; set; } //Navigation Many Actions Belongs to one Entity
-        public virtual TeamAction TeamAction { get; set; } // Navigation 1 Action has 1 TeamAction
+        public virtual Action TeamAction { get; set; } // Navigation 1 Action has 1 TeamAction
 
-        public Actions(int actionId, int assistedEntitiesId, DateTime actionDay, VisitPeriod actionPeriod, ActionKind actionKind,
-            AssistedEntities assistedEntities)
-        {
-            ActionID = actionId;
-            AssistedEntitiesID = assistedEntitiesId;
-            ActionDay = actionDay;
-            ActionPeriod = actionPeriod;
-            ActionKind = actionKind;
-            AssistedEntities = assistedEntities;
-        }
+       
     }
 }

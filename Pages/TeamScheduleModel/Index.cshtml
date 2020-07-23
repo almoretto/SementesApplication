@@ -1,0 +1,48 @@
+﻿@page
+@model SementesApplication.Pages.TeamScheduleModel.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.TeamSchedule[0].TeamScheduleDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TeamSchedule[0].TeamSchedulePeriod)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TeamSchedule[0].Volunteer)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.TeamSchedule) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TeamScheduleDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TeamSchedulePeriod)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Volunteer.VolunteerID)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.TeamScheduleID">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.TeamScheduleID">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.TeamScheduleID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

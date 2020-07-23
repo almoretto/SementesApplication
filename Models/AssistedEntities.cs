@@ -24,21 +24,6 @@ namespace SementesApplication
         //Navigations
         public virtual ICollection<Actions> Actions { get; set; } //Navigation One Entity Has Many Actions
 
-        public AssistedEntities(int assistedEntitiesId, string assistedEntitiesName, DayOfWeek assistedEntitiesVisitDay,
-            DateTime assistedEntitiesVisitTime, TimeSpan assistedEntitiesVisitDuration, VisitScale assistedEntitiesScale,
-            VisitMaximumPeople assistedEntitiesMaxVolunteer, string assistedEntitiesContact, string contactPhone,
-            string contactEmail)
-        {
-            AssistedEntitiesID = assistedEntitiesId;
-            AssistedEntitiesName = assistedEntitiesName;
-            AssistedEntitiesVisitDay = assistedEntitiesVisitDay;
-            AssistedEntitiesVisitTime = assistedEntitiesVisitTime;
-            AssistedEntitiesVisitDuration = assistedEntitiesVisitDuration;
-            AssistedEntitiesScale = assistedEntitiesScale;
-            AssistedEntitiesMaxVolunteer = assistedEntitiesMaxVolunteer;
-            AssistedEntitiesContact = assistedEntitiesContact;
-            ContactPhone = contactPhone;
-            ContactEmail = contactEmail;
-        }
+       
     }
 }

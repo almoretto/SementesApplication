@@ -32,10 +32,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Data\" />
-    <Folder Include="Models\" />
-    <Folder Include="Pages\Address\" />
-    <Folder Include="Pages\CityModel\" />
+    <Folder Include="Pages\ActionModel\" />
   </ItemGroup>
 
 </Project>

@@ -12,11 +12,10 @@ namespace SementesApplication
 
         public DbSet<Volunteer> Volunteers { get; set; }
         public DbSet<AssistedEntities> AssistedEntities { get; set; }
-        public DbSet<Actions> Actions { get; set; }
         public DbSet<Address> Adresses { get; set; }
         public DbSet<City> Cities { get; set; }
         public DbSet<TeamSchedule> TeamSchedules { get; set; }
-        public DbSet<Action> TeamActions { get; set; }
+      
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

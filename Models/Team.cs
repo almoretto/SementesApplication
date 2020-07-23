@@ -8,10 +8,9 @@ namespace SementesApplication
     public class Team
     {
         public int TeamID { get; set; }
-        public int VolunteerID { get; set; }
-        public int ActionID { get; set; }
+        public List<int> TeamSchedule { get; set; }
 
-        public virtual ICollection<Volunteer> Volunteer { get; set; }
-
+        public virtual ICollection<TeamSchedule> TeamSchedules { get; set; }
+        public virtual Job job { get; set; }
     }
 }

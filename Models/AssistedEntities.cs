@@ -1,5 +1,4 @@
 ﻿using System;
-using SementesTeste.enums;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
@@ -15,14 +14,14 @@ namespace SementesApplication
         [DataType(DataType.Date)]
         public DateTime AssistedEntitiesVisitTime { get; set; }
         public TimeSpan AssistedEntitiesVisitDuration { get; set; }
-        public VisitScale AssistedEntitiesScale { get; set; }
+        public VisitScale AssitedEntitiesVisitScale { get; set; }
         public VisitMaximumPeople AssistedEntitiesMaxVolunteer { get; set; }
         public string AssistedEntitiesContact { get; set; }
         public string ContactPhone { get; set; }
         public string ContactEmail { get; set; }
 
         //Navigations
-        public virtual ICollection<Actions> Actions { get; set; } //Navigation One Entity Has Many Actions
+        public virtual ICollection<Job> Jobs { get; set; } //Navigation One Entity Has Many Actions
 
        
     }

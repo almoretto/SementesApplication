@@ -1,5 +1,4 @@
-﻿using SementesTeste.enums;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace SementesApplication

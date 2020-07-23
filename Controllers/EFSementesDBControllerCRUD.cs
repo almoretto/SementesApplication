@@ -16,14 +16,7 @@ namespace SementesApplication
         {
             return _dBContext.AssistedEntities.ToList();
         }
-        public List<Actions> FetchActions()
-        {
-            return _dBContext.Actions.ToList();
-        }
-        public List<Action> FetchTeamActions()
-        {
-            return _dBContext.TeamActions.ToList();
-        }
+       
         public List<TeamSchedule> FetchTeamSchedule()
         {
             return _dBContext.TeamSchedules.ToList();
@@ -56,12 +49,7 @@ namespace SementesApplication
             return address.AddressID;
 
         }
-        public int AddActions (Actions action)
-        {
-            _dBContext.Actions.Add(action);
-            _dBContext.SaveChanges();
-            return action.ActionID;
-        }
+       
         public int AddVolunteerTeamSchedule(TeamSchedule volunteerLeaseTime)
         {
             _dBContext.TeamSchedules.Add(volunteerLeaseTime);
@@ -75,16 +63,8 @@ namespace SementesApplication
             _dBContext.AssistedEntities.Remove(entity);
             _dBContext.SaveChanges();
         }
-        public void RemoveActions(Actions action)
-        {
-            _dBContext.Actions.Remove(action);
-            _dBContext.SaveChanges();
-        }
-        public void RemoveTeamAction(Action teamAction)
-        {
-            _dBContext.TeamActions.Remove(teamAction);
-            _dBContext.SaveChanges();
-        }
+       
+        
         public void RemoveTeamSchedule(TeamSchedule teamSchedule)
         {
             _dBContext.TeamSchedules.Remove(teamSchedule);

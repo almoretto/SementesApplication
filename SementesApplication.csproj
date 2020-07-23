@@ -32,7 +32,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Pages\ActionModel\" />
+    <Folder Include="Pages\City\" />
   </ItemGroup>
 
 </Project>

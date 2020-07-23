@@ -26,8 +26,8 @@ namespace SementesApplication
         //Navigation
         public virtual Address Address { get; set; } //Navigation 1 to 1 with address
         public virtual ICollection<TeamSchedule> TeamSchedules { get; set; } //Navigation 1 volunteer has many TeamSchedule
-        public virtual Action TeamAction { get; set; }
-
+       
+        
        
         private void AgeCalculator()
         {

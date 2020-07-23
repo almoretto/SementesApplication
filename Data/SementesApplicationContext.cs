@@ -14,18 +14,8 @@ namespace SementesApplication.Data
         {
         }
 
-        public DbSet<SementesApplication.City> City { get; set; }
+       
 
-        public DbSet<SementesApplication.Address> Address { get; set; }
-
-        public DbSet<SementesApplication.Volunteer> Volunteer { get; set; }
-
-        public DbSet<SementesApplication.TeamSchedule> TeamSchedule { get; set; }
-
-        public DbSet<SementesApplication.Team> Team { get; set; }
-
-        public DbSet<SementesApplication.AssistedEntities> AssistedEntities { get; set; }
-
-        public DbSet<SementesApplication.Actions> Actions { get; set; }
+      
     }
 }

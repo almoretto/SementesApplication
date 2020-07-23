@@ -15,7 +15,7 @@ namespace SementesApplication
 
         //Navigations
         public virtual Volunteer Volunteer { get; set; } //Navigation 1 volunteer has many TeamSchedule
-        public virtual Team team { get; set; }
+       
        
     }
 }

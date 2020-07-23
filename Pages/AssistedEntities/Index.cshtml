@@ -1,0 +1,84 @@
+﻿@page
+@model SementesApplication.IndexModelAssistedEntities
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.AssistedEntities[0].AssistedEntitiesName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AssistedEntities[0].AssistedEntitiesVisitDay)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AssistedEntities[0].AssistedEntitiesVisitTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AssistedEntities[0].AssistedEntitiesVisitDuration)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AssistedEntities[0].AssitedEntitiesVisitScale)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AssistedEntities[0].AssistedEntitiesMaxVolunteer)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AssistedEntities[0].AssistedEntitiesContact)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AssistedEntities[0].ContactPhone)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AssistedEntities[0].ContactEmail)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.AssistedEntities) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.AssistedEntitiesName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AssistedEntitiesVisitDay)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AssistedEntitiesVisitTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AssistedEntitiesVisitDuration)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AssitedEntitiesVisitScale)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AssistedEntitiesMaxVolunteer)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AssistedEntitiesContact)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ContactPhone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ContactEmail)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.AssistedEntitiesID">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.AssistedEntitiesID">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.AssistedEntitiesID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

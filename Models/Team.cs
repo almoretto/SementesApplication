@@ -1,16 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace SementesApplication
 {
     public class Team
     {
         public int TeamID { get; set; }
-        public List<int> TeamSchedule { get; set; }
+        public List<Volunteer> Volunteer { get; set; } = new List<Volunteer>();
 
-        public virtual ICollection<TeamSchedule> TeamSchedules { get; set; }
+        public virtual ICollection<Volunteer> Volunteers { get; set; }
         public virtual Job job { get; set; }
     }
 }

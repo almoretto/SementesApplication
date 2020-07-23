@@ -1,0 +1,73 @@
+﻿@page
+@model SementesApplication.DetailsModelAssistedEntities
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>AssistedEntities</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.AssistedEntities.AssistedEntitiesName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.AssistedEntities.AssistedEntitiesName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.AssistedEntities.AssistedEntitiesVisitDay)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.AssistedEntities.AssistedEntitiesVisitDay)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.AssistedEntities.AssistedEntitiesVisitTime)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.AssistedEntities.AssistedEntitiesVisitTime)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.AssistedEntities.AssistedEntitiesVisitDuration)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.AssistedEntities.AssistedEntitiesVisitDuration)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.AssistedEntities.AssitedEntitiesVisitScale)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.AssistedEntities.AssitedEntitiesVisitScale)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.AssistedEntities.AssistedEntitiesMaxVolunteer)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.AssistedEntities.AssistedEntitiesMaxVolunteer)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.AssistedEntities.AssistedEntitiesContact)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.AssistedEntities.AssistedEntitiesContact)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.AssistedEntities.ContactPhone)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.AssistedEntities.ContactPhone)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.AssistedEntities.ContactEmail)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.AssistedEntities.ContactEmail)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.AssistedEntities.AssistedEntitiesID">Edit</a> |
+    <a asp-page="./Index">Back to List</a>
+</div>

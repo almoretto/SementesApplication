@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using SementesApplication;
 
 namespace SementesApplication.Data
@@ -13,6 +9,14 @@ namespace SementesApplication.Data
             : base(options)
         {
         }
+        public DbSet<SementesApplication.City> City { get; set; }
+        public DbSet<SementesApplication.Address> Address { get; set; }
+        public DbSet<SementesApplication.AssistedEntities> AssistedEntities { get; set; }
+        public DbSet<SementesApplication.Job> Job { get; set; }
+        public DbSet<SementesApplication.Volunteer> Volunteer { get; set; }
+        public DbSet<SementesApplication.TeamSchedule> TeamSchedule { get; set; }
+        public DbSet<SementesApplication.Team> Team { get; set; }
+       
 
        
 

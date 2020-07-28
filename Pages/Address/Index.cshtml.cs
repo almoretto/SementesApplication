@@ -7,9 +7,9 @@ namespace SementesApplication
 {
     public class IndexModelAddress : PageModel
     {
-        private readonly SementesApplication.Data.SementesApplicationContext _context;
+        private readonly SementesApplicationContext _context;
 
-        public IndexModelAddress(SementesApplication.Data.SementesApplicationContext context)
+        public IndexModelAddress(SementesApplicationContext context)
         {
             _context = context;
         }

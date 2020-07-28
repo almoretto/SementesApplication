@@ -1,7 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using SementesApplication;
 
-namespace SementesApplication.Data
+
+
+namespace SementesApplication
 {
     public class SementesApplicationContext : DbContext
     {
@@ -9,17 +10,14 @@ namespace SementesApplication.Data
             : base(options)
         {
         }
-        public DbSet<SementesApplication.City> City { get; set; }
-        public DbSet<SementesApplication.Address> Address { get; set; }
-        public DbSet<SementesApplication.AssistedEntities> AssistedEntities { get; set; }
-        public DbSet<SementesApplication.Job> Job { get; set; }
-        public DbSet<SementesApplication.Volunteer> Volunteer { get; set; }
-        public DbSet<SementesApplication.TeamSchedule> TeamSchedule { get; set; }
-        public DbSet<SementesApplication.Team> Team { get; set; }
-       
+        public DbSet<City> City { get; set; }
+        public DbSet<Address> Address { get; set; }
+        public DbSet<AssistedEntities> AssistedEntities { get; set; }
+        public DbSet<Job> Job { get; set; }
+        public DbSet<Volunteer> Volunteer { get; set; }
+        public DbSet<TeamSchedule> TeamSchedule { get; set; }
+        public DbSet<Team> Team { get; set; }
 
        
-
-      
     }
 }

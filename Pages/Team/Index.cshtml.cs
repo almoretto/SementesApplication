@@ -7,9 +7,9 @@ namespace SementesApplication
 {
     public class IndexModelTeam : PageModel
     {
-        private readonly SementesApplication.Data.SementesApplicationContext _context;
+        private readonly SementesApplicationContext _context;
 
-        public IndexModelTeam(SementesApplication.Data.SementesApplicationContext context)
+        public IndexModelTeam(SementesApplicationContext context)
         {
             _context = context;
         }

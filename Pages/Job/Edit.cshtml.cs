@@ -9,9 +9,9 @@ namespace SementesApplication
 {
     public class EditModelJob : PageModel
     {
-        private readonly SementesApplication.Data.SementesApplicationContext _context;
+        private readonly SementesApplicationContext _context;
 
-        public EditModelJob(SementesApplication.Data.SementesApplicationContext context)
+        public EditModelJob(SementesApplicationContext context)
         {
             _context = context;
         }

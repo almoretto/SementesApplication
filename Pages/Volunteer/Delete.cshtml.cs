@@ -7,9 +7,9 @@ namespace SementesApplication
 {
     public class DeleteModelVolunteer : PageModel
     {
-        private readonly SementesApplication.Data.SementesApplicationContext _context;
+        private readonly SementesApplicationContext _context;
 
-        public DeleteModelVolunteer(SementesApplication.Data.SementesApplicationContext context)
+        public DeleteModelVolunteer(SementesApplicationContext context)
         {
             _context = context;
         }

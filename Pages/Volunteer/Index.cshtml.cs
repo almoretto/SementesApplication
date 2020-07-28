@@ -1,20 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
-using SementesApplication;
-using SementesApplication.Data;
 
 namespace SementesApplication
 {
     public class IndexModelVolunteer : PageModel
     {
-        private readonly SementesApplication.Data.SementesApplicationContext _context;
+        private readonly SementesApplicationContext _context;
 
-        public IndexModelVolunteer(SementesApplication.Data.SementesApplicationContext context)
+        public IndexModelVolunteer(SementesApplicationContext context)
         {
             _context = context;
         }

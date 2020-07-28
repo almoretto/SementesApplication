@@ -1,4 +1,5 @@
-﻿using System.Data.Entity;
+﻿/*
+ * using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
 
 namespace SementesApplication
@@ -19,11 +20,11 @@ namespace SementesApplication
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            /*A instrução modelBuilder.Conventions.Remove no método OnModelCreating impede que nomes de tabela sejam pluraled. 
-             * Se você não fez isso, as tabelas geradas no banco de dados seriam nomeadas Students, Coursese Enrollments. 
-             * Em vez disso, os nomes de tabela serão Student, Coursee Enrollment. */
+             //A instrução modelBuilder.Conventions.Remove no método OnModelCreating impede que nomes de tabela sejam pluraled. 
+             // Se você não fez isso, as tabelas geradas no banco de dados seriam nomeadas Students, Coursese Enrollments. 
+             // Em vez disso, os nomes de tabela serão Student, Coursee Enrollment.
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
         }
 
     }
-}
+}*/

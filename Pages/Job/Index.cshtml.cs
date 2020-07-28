@@ -7,9 +7,9 @@ namespace SementesApplication
 {
     public class IndexModelJob : PageModel
     {
-        private readonly SementesApplication.Data.SementesApplicationContext _context;
+        private readonly SementesApplicationContext _context;
 
-        public IndexModelJob(SementesApplication.Data.SementesApplicationContext context)
+        public IndexModelJob(SementesApplicationContext context)
         {
             _context = context;
         }

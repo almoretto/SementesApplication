@@ -8,9 +8,9 @@ namespace SementesApplication
 {
     public class DeleteModelTeamSchedule : PageModel
     {
-        private readonly SementesApplication.Data.SementesApplicationContext _context;
+        private readonly SementesApplicationContext _context;
 
-        public DeleteModelTeamSchedule(SementesApplication.Data.SementesApplicationContext context)
+        public DeleteModelTeamSchedule(SementesApplicationContext context)
         {
             _context = context;
         }

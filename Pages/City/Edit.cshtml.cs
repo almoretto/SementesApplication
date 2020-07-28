@@ -8,9 +8,9 @@ namespace SementesApplication
 {
     public class EditModelCity : PageModel
     {
-        private readonly SementesApplication.Data.SementesApplicationContext _context;
+        private readonly SementesApplicationContext _context;
 
-        public EditModelCity(SementesApplication.Data.SementesApplicationContext context)
+        public EditModelCity(SementesApplicationContext context)
         {
             _context = context;
         }

@@ -7,9 +7,9 @@ namespace SementesApplication
 {
     public class DetailsModelJob : PageModel
     {
-        private readonly SementesApplication.Data.SementesApplicationContext _context;
+        private readonly SementesApplicationContext _context;
 
-        public DetailsModelJob(SementesApplication.Data.SementesApplicationContext context)
+        public DetailsModelJob(SementesApplicationContext context)
         {
             _context = context;
         }

@@ -8,9 +8,9 @@ namespace SementesApplication
 {
     public class EditModelAssistedEntities : PageModel
     {
-        private readonly SementesApplication.Data.SementesApplicationContext _context;
+        private readonly SementesApplicationContext _context;
 
-        public EditModelAssistedEntities(SementesApplication.Data.SementesApplicationContext context)
+        public EditModelAssistedEntities(SementesApplicationContext context)
         {
             _context = context;
         }

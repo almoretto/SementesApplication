@@ -7,9 +7,9 @@ namespace SementesApplication
 {
     public class DetailsModelTeamSchedule : PageModel
     {
-        private readonly SementesApplication.Data.SementesApplicationContext _context;
+        private readonly SementesApplicationContext _context;
 
-        public DetailsModelTeamSchedule(SementesApplication.Data.SementesApplicationContext context)
+        public DetailsModelTeamSchedule(SementesApplicationContext context)
         {
             _context = context;
         }

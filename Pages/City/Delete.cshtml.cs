@@ -7,9 +7,9 @@ namespace SementesApplication
 {
     public class DeleteModelCity : PageModel
     {
-        private readonly SementesApplication.Data.SementesApplicationContext _context;
+        private readonly SementesApplicationContext _context;
 
-        public DeleteModelCity(SementesApplication.Data.SementesApplicationContext context)
+        public DeleteModelCity(SementesApplicationContext context)
         {
             _context = context;
         }

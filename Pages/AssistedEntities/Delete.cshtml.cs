@@ -7,9 +7,9 @@ namespace SementesApplication
 {
     public class DeleteModelAssistedEntities : PageModel
     {
-        private readonly SementesApplication.Data.SementesApplicationContext _context;
+        private readonly SementesApplicationContext _context;
 
-        public DeleteModelAssistedEntities(SementesApplication.Data.SementesApplicationContext context)
+        public DeleteModelAssistedEntities(SementesApplicationContext context)
         {
             _context = context;
         }

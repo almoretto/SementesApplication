@@ -7,9 +7,9 @@ namespace SementesApplication
 {
     public class DetailsModelAssistedEntities : PageModel
     {
-        private readonly SementesApplication.Data.SementesApplicationContext _context;
+        private readonly SementesApplicationContext _context;
 
-        public DetailsModelAssistedEntities(SementesApplication.Data.SementesApplicationContext context)
+        public DetailsModelAssistedEntities(SementesApplicationContext context)
         {
             _context = context;
         }

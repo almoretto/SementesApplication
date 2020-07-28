@@ -7,9 +7,9 @@ namespace SementesApplication
 {
     public class DeleteModelAddress : PageModel
     {
-        private readonly SementesApplication.Data.SementesApplicationContext _context;
+        private readonly SementesApplicationContext _context;
 
-        public DeleteModelAddress(SementesApplication.Data.SementesApplicationContext context)
+        public DeleteModelAddress(SementesApplicationContext context)
         {
             _context = context;
         }

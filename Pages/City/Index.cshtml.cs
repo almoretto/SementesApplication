@@ -10,9 +10,9 @@ namespace SementesApplication
     /// </summary>
     public class IndexModelCity : PageModel
     {
-        private readonly SementesApplication.Data.SementesApplicationContext _context;
+        private readonly SementesApplicationContext _context;
 
-        public IndexModelCity(SementesApplication.Data.SementesApplicationContext context)
+        public IndexModelCity(SementesApplicationContext context)
         {
             _context = context;
         }

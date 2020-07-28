@@ -7,9 +7,9 @@ namespace SementesApplication
 {
     public class IndexModelAssistedEntities : PageModel
     {
-        private readonly SementesApplication.Data.SementesApplicationContext _context;
+        private readonly SementesApplicationContext _context;
 
-        public IndexModelAssistedEntities(SementesApplication.Data.SementesApplicationContext context)
+        public IndexModelAssistedEntities(SementesApplicationContext context)
         {
             _context = context;
         }

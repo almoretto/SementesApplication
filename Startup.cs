@@ -3,9 +3,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using SementesApplication;
 using Microsoft.EntityFrameworkCore;
-using SementesApplication.Data;
 
 namespace SementesApplication
 {

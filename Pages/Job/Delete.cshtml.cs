@@ -8,9 +8,9 @@ namespace SementesApplication
 {
     public class DeleteModelJob : PageModel
     {
-        private readonly SementesApplication.Data.SementesApplicationContext _context;
+        private readonly SementesApplicationContext _context;
 
-        public DeleteModelJob(SementesApplication.Data.SementesApplicationContext context)
+        public DeleteModelJob(SementesApplicationContext context)
         {
             _context = context;
         }

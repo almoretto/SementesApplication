@@ -9,9 +9,9 @@ namespace SementesApplication
 {
     public class EditModelTeamSchedule : PageModel
     {
-        private readonly SementesApplication.Data.SementesApplicationContext _context;
+        private readonly SementesApplicationContext _context;
 
-        public EditModelTeamSchedule(SementesApplication.Data.SementesApplicationContext context)
+        public EditModelTeamSchedule(SementesApplicationContext context)
         {
             _context = context;
         }

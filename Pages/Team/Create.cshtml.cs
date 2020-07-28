@@ -6,9 +6,9 @@ namespace SementesApplication
 {
     public class CreateModelTeam : PageModel
     {
-        private readonly SementesApplication.Data.SementesApplicationContext _context;
+        private readonly SementesApplicationContext _context;
 
-        public CreateModelTeam(SementesApplication.Data.SementesApplicationContext context)
+        public CreateModelTeam(SementesApplicationContext context)
         {
             _context = context;
         }

@@ -7,9 +7,9 @@ namespace SementesApplication
 {
     public class DetailsModelAddress : PageModel
     {
-        private readonly SementesApplication.Data.SementesApplicationContext _context;
+        private readonly SementesApplicationContext _context;
 
-        public DetailsModelAddress(SementesApplication.Data.SementesApplicationContext context)
+        public DetailsModelAddress(SementesApplicationContext context)
         {
             _context = context;
         }

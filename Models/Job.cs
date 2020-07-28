@@ -19,5 +19,6 @@ namespace SementesApplication
         public virtual Team Team { get; set; } //Navigation 1 team action has many volunteers
         public virtual AssistedEntities AssitedEntity { get; set; }
        
+
     }
 }

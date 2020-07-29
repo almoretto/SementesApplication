@@ -4,14 +4,15 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using SementesApplication.Data;
 
 namespace SementesApplication
 {
     public class EditVolunteer : PageModel
     {
-        private readonly SementesApplication.SementesApplicationContext _context;
+        private readonly SementesApplicationContext _context;
 
-        public EditVolunteer(SementesApplication.SementesApplicationContext context)
+        public EditVolunteer(SementesApplicationContext context)
         {
             _context = context;
         }

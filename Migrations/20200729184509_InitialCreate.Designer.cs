@@ -4,12 +4,13 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
-
+using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
+using SementesApplication.Data;
 
 namespace SementesApplication.Migrations
 {
     [DbContext(typeof(SementesApplicationContext))]
-    [Migration("20200727190134_InitialCreate")]
+    [Migration("20200729184509_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -101,10 +102,16 @@ namespace SementesApplication.Migrations
                     b.Property<string>("CityName")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("CityStateId")
+                        .HasColumnType("int");
+
                     b.Property<int>("StateAbreviationId")
                         .HasColumnType("int");
 
                     b.Property<int>("StateId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("UFId")
                         .HasColumnType("int");
 
                     b.HasKey("CityID");
@@ -260,7 +267,7 @@ namespace SementesApplication.Migrations
                         .IsRequired();
 
                     b.HasOne("SementesApplication.Team", "Team")
-                        .WithOne("job")
+                        .WithOne("Job")
                         .HasForeignKey("SementesApplication.Job", "TeamID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();

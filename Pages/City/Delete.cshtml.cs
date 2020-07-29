@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
@@ -7,15 +8,15 @@ namespace SementesApplication
 {
     public class DeleteCity : PageModel
     {
-        private readonly SementesApplicationContext _context;
+        private readonly SementesApplication.Data.SementesApplicationContext _context;
 
-        public DeleteCity(SementesApplicationContext context)
+        public DeleteCity(SementesApplication.Data.SementesApplicationContext context)
         {
             _context = context;
         }
 
         [BindProperty]
-        public City City { get; set; } 
+        public City City { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {

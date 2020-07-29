@@ -13,6 +13,7 @@ namespace SementesApplication
         public string VolunteerDocCPF { get; set; }
         public string VolunteerDocRG { get; set; }
         public string VolunteerName { get; set; }
+
         [DataType(DataType.Date)]
         public DateTime VolunteerBirthDate { get; set; }
         public int VolunteerAge { get; private set; }

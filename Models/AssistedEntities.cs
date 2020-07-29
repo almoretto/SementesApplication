@@ -9,12 +9,18 @@ namespace SementesApplication
         [Key]
         public int AssistedEntitiesID { get; set; }
         public string AssistedEntitiesName { get; set; }
+
+        [EnumDataType(typeof(DayOfWeek))]
         public DayOfWeek AssistedEntitiesVisitDay { get; set; }
         
         [DataType(DataType.Date)]
         public DateTime AssistedEntitiesVisitTime { get; set; }
         public TimeSpan AssistedEntitiesVisitDuration { get; set; }
+
+        [EnumDataType(typeof(VisitScale))]
         public VisitScale AssitedEntitiesVisitScale { get; set; }
+
+        [EnumDataType(typeof(VisitMaximumPeople))]
         public VisitMaximumPeople AssistedEntitiesMaxVolunteer { get; set; }
         public string AssistedEntitiesContact { get; set; }
         public string ContactPhone { get; set; }

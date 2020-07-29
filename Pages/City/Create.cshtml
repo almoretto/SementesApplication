@@ -19,13 +19,23 @@
                 <span asp-validation-for="City.CityName" class="text-danger"></span>
             </div>
             <div class="form-group">
+                <label asp-for="City.CityStateId" class="control-label"></label>
+                <select asp-for="City.CityStateId" class="form-control"></select>
+                <span asp-validation-for="City.CityStateId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="City.UFId" class="control-label"></label>
+                <select asp-for="City.UFId" class="form-control"></select>
+                <span asp-validation-for="City.UFId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
                 <label asp-for="City.StateId" class="control-label"></label>
-                <select asp-for="City.StateId" class="form-control"></select>
+                <input asp-for="City.StateId" class="form-control" />
                 <span asp-validation-for="City.StateId" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="City.StateAbreviationId" class="control-label"></label>
-                <select asp-for="City.StateAbreviationId" class="form-control"></select>
+                <input asp-for="City.StateAbreviationId" class="form-control" />
                 <span asp-validation-for="City.StateAbreviationId" class="text-danger"></span>
             </div>
             <div class="form-group">

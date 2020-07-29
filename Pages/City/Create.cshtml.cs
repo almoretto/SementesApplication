@@ -6,9 +6,9 @@ namespace SementesApplication
 {
     public class CreateCity : PageModel
     {
-        private readonly SementesApplicationContext _context;
+        private readonly SementesApplication.Data.SementesApplicationContext _context;
 
-        public CreateCity(SementesApplicationContext context)
+        public CreateCity(SementesApplication.Data.SementesApplicationContext context)
         {
             _context = context;
         }

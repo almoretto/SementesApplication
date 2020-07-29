@@ -12,6 +12,8 @@ namespace SementesApplication
         [DataType(DataType.Date)]
         public DateTime JobDay { get; set; }
         public char JobPeriod { get; set; } //M, T, N
+
+        [EnumDataType(typeof(ActionKind))]
         public ActionKind ActionKind { get; set; }
         public int AssistedEntitiesID { get; set; }
         public int TeamID { get; set; }

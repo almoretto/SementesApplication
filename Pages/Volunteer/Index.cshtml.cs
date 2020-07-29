@@ -2,14 +2,15 @@
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
+using SementesApplication.Data;
 
 namespace SementesApplication
 {
     public class IndexVolunteer : PageModel
     {
-        private readonly SementesApplication.SementesApplicationContext _context;
+        private readonly SementesApplicationContext _context;
 
-        public IndexVolunteer(SementesApplication.SementesApplicationContext context)
+        public IndexVolunteer(SementesApplicationContext context)
         {
             _context = context;
         }

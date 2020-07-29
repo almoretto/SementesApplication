@@ -5,14 +5,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace SementesApplication
 {
-    /// <summary>
-    ///City Indexcshtml.cs 
-    /// </summary>
     public class IndexCity : PageModel
     {
-        private readonly SementesApplicationContext _context;
+        private readonly SementesApplication.Data.SementesApplicationContext _context;
 
-        public IndexCity(SementesApplicationContext context)
+        public IndexCity(SementesApplication.Data.SementesApplicationContext context)
         {
             _context = context;
         }

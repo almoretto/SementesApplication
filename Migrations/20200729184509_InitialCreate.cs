@@ -1,5 +1,6 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
+using SementesApplication.Data;
 
 namespace SementesApplication.Migrations
 {
@@ -7,6 +8,7 @@ namespace SementesApplication.Migrations
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            
             migrationBuilder.CreateTable(
                 name: "AssistedEntities",
                 columns: table => new
@@ -35,6 +37,8 @@ namespace SementesApplication.Migrations
                     CityID = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     CityName = table.Column<string>(nullable: true),
+                    CityStateId = table.Column<int>(nullable: false),
+                    UFId = table.Column<int>(nullable: false),
                     StateId = table.Column<int>(nullable: false),
                     StateAbreviationId = table.Column<int>(nullable: false)
                 },

@@ -2,7 +2,7 @@
 
 
 
-namespace SementesApplication
+namespace SementesApplication.Data
 {
     public class SementesApplicationContext : DbContext
     {

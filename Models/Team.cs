@@ -8,6 +8,6 @@ namespace SementesApplication
         public List<Volunteer> Volunteer { get; set; } = new List<Volunteer>();
 
         public virtual ICollection<Volunteer> Volunteers { get; set; }
-        public virtual Job job { get; set; }
+        public virtual Job Job { get; set; }
     }
 }

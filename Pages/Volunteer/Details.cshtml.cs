@@ -2,14 +2,15 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
+using SementesApplication.Data;
 
 namespace SementesApplication
 {
     public class DetailsVolunteer : PageModel
     {
-        private readonly SementesApplication.SementesApplicationContext _context;
+        private readonly SementesApplicationContext _context;
 
-        public DetailsVolunteer(SementesApplication.SementesApplicationContext context)
+        public DetailsVolunteer(SementesApplicationContext context)
         {
             _context = context;
         }

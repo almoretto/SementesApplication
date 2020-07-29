@@ -2,14 +2,15 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
+using SementesApplication.Data;
 
 namespace SementesApplication
 {
     public class DeleteVolunteer : PageModel
     {
-        private readonly SementesApplication.SementesApplicationContext _context;
+        private readonly SementesApplicationContext _context;
 
-        public DeleteVolunteer(SementesApplication.SementesApplicationContext context)
+        public DeleteVolunteer(SementesApplicationContext context)
         {
             _context = context;
         }

@@ -6,6 +6,8 @@ namespace SementesApplication
     {
         [Key]
         public int AddressID { get; set; }
+
+        [EnumDataType(typeof(AddressKind))]
         public AddressKind AddressKind { get; set; }
         public string AddressDesignation { get; set; }
         public string  AddressNumber { get; set; }

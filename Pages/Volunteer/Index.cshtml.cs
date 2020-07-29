@@ -5,11 +5,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace SementesApplication
 {
-    public class IndexModelVolunteer : PageModel
+    public class IndexVolunteer : PageModel
     {
-        private readonly SementesApplicationContext _context;
+        private readonly SementesApplication.SementesApplicationContext _context;
 
-        public IndexModelVolunteer(SementesApplicationContext context)
+        public IndexVolunteer(SementesApplication.SementesApplicationContext context)
         {
             _context = context;
         }

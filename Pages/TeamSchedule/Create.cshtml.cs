@@ -5,11 +5,11 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace SementesApplication
 {
-    public class CreateModelTeamSchedule : PageModel
+    public class CreateTeamSchedule : PageModel
     {
         private readonly SementesApplicationContext _context;
 
-        public CreateModelTeamSchedule(SementesApplicationContext context)
+        public CreateTeamSchedule(SementesApplicationContext context)
         {
             _context = context;
         }

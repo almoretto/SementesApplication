@@ -1,16 +1,15 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 
 namespace SementesApplication
 {
-    public class DeleteModelJob : PageModel
+    public class DeleteJob : PageModel
     {
         private readonly SementesApplicationContext _context;
 
-        public DeleteModelJob(SementesApplicationContext context)
+        public DeleteJob(SementesApplicationContext context)
         {
             _context = context;
         }

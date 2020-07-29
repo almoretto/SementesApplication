@@ -6,11 +6,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace SementesApplication
 {
-    public class EditModelAssistedEntities : PageModel
+    public class EditAssistedEntities : PageModel
     {
         private readonly SementesApplicationContext _context;
 
-        public EditModelAssistedEntities(SementesApplicationContext context)
+        public EditAssistedEntities(SementesApplicationContext context)
         {
             _context = context;
         }

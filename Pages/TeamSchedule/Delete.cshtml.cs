@@ -6,11 +6,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace SementesApplication
 {
-    public class DeleteModelTeamSchedule : PageModel
+    public class DeleteTeamSchedule : PageModel
     {
         private readonly SementesApplicationContext _context;
 
-        public DeleteModelTeamSchedule(SementesApplicationContext context)
+        public DeleteTeamSchedule(SementesApplicationContext context)
         {
             _context = context;
         }

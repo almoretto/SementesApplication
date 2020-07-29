@@ -5,11 +5,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace SementesApplication
 {
-    public class DeleteModelVolunteer : PageModel
+    public class DeleteVolunteer : PageModel
     {
-        private readonly SementesApplicationContext _context;
+        private readonly SementesApplication.SementesApplicationContext _context;
 
-        public DeleteModelVolunteer(SementesApplicationContext context)
+        public DeleteVolunteer(SementesApplication.SementesApplicationContext context)
         {
             _context = context;
         }

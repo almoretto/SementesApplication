@@ -10,6 +10,11 @@ namespace SementesApplication
             : base(options)
         {
         }
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            optionsBuilder.UseSqlServer(
+                @"Server=(localdb)\mssqllocaldb;Database=SementesApplicationContext;Integrated Security=True");
+        }
         public DbSet<City> City { get; set; }
         public DbSet<Address> Address { get; set; }
         public DbSet<AssistedEntities> AssistedEntities { get; set; }

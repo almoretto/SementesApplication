@@ -8,11 +8,11 @@ namespace SementesApplication
     /// <summary>
     ///City Indexcshtml.cs 
     /// </summary>
-    public class IndexModelCity : PageModel
+    public class IndexCity : PageModel
     {
         private readonly SementesApplicationContext _context;
 
-        public IndexModelCity(SementesApplicationContext context)
+        public IndexCity(SementesApplicationContext context)
         {
             _context = context;
         }

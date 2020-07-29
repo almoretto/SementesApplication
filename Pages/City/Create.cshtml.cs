@@ -4,11 +4,11 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace SementesApplication
 {
-    public class CreateModelCity : PageModel
+    public class CreateCity : PageModel
     {
         private readonly SementesApplicationContext _context;
 
-        public CreateModelCity(SementesApplicationContext context)
+        public CreateCity(SementesApplicationContext context)
         {
             _context = context;
         }

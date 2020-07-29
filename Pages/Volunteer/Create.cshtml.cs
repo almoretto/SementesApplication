@@ -5,11 +5,11 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace SementesApplication
 {
-    public class CreateModelVolunteer : PageModel
+    public class CreateVolunteer : PageModel
     {
-        private readonly SementesApplicationContext _context;
+        private readonly SementesApplication.SementesApplicationContext _context;
 
-        public CreateModelVolunteer(SementesApplicationContext context)
+        public CreateVolunteer(SementesApplication.SementesApplicationContext context)
         {
             _context = context;
         }

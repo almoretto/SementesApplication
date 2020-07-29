@@ -5,11 +5,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace SementesApplication
 {
-    public class DeleteModelAssistedEntities : PageModel
+    public class DeleteAssistedEntities : PageModel
     {
         private readonly SementesApplicationContext _context;
 
-        public DeleteModelAssistedEntities(SementesApplicationContext context)
+        public DeleteAssistedEntities(SementesApplicationContext context)
         {
             _context = context;
         }

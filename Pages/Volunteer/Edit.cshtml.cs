@@ -7,11 +7,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace SementesApplication
 {
-    public class EditModelVolunteer : PageModel
+    public class EditVolunteer : PageModel
     {
-        private readonly SementesApplicationContext _context;
+        private readonly SementesApplication.SementesApplicationContext _context;
 
-        public EditModelVolunteer(SementesApplicationContext context)
+        public EditVolunteer(SementesApplication.SementesApplicationContext context)
         {
             _context = context;
         }

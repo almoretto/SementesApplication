@@ -4,11 +4,11 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace SementesApplication
 { 
-    public class CreateModelAssistedEntities : PageModel
+    public class CreateAssistedEntities : PageModel
     {
         private readonly SementesApplicationContext _context;
 
-        public CreateModelAssistedEntities(SementesApplicationContext context)
+        public CreateAssistedEntities(SementesApplicationContext context)
         {
             _context = context;
         }

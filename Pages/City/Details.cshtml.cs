@@ -5,11 +5,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace SementesApplication
 {
-    public class DetailsModelCity : PageModel
+    public class DetailsCity : PageModel
     {
         private readonly SementesApplicationContext _context;
 
-        public DetailsModelCity(SementesApplicationContext context)
+        public DetailsCity(SementesApplicationContext context)
         {
             _context = context;
         }

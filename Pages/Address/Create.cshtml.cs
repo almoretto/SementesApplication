@@ -5,11 +5,11 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace SementesApplication
 {
-    public class CreateModelAddress : PageModel
+    public class CreateAddress : PageModel
     {
         private readonly SementesApplicationContext _context;
 
-        public CreateModelAddress(SementesApplicationContext context)
+        public CreateAddress(SementesApplicationContext context)
         {
             _context = context;
         }

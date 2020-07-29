@@ -4,11 +4,11 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace SementesApplication
 {
-    public class CreateModelTeam : PageModel
+    public class CreateTeam : PageModel
     {
         private readonly SementesApplicationContext _context;
 
-        public CreateModelTeam(SementesApplicationContext context)
+        public CreateTeam(SementesApplicationContext context)
         {
             _context = context;
         }

@@ -5,11 +5,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace SementesApplication
 {
-    public class IndexModelAssistedEntities : PageModel
+    public class IndexAssistedEntities : PageModel
     {
         private readonly SementesApplicationContext _context;
 
-        public IndexModelAssistedEntities(SementesApplicationContext context)
+        public IndexAssistedEntities(SementesApplicationContext context)
         {
             _context = context;
         }

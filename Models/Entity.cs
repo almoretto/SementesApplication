@@ -4,10 +4,10 @@ using System.ComponentModel.DataAnnotations;
 
 namespace SementesApplication
 {
-    public class AssistedEntities
+    public class Entity
     {
         [Key]
-        public int EntityID { get; set; }
+        public int EntityId { get; set; }
         public string EntityName { get; set; }
 
         [EnumDataType(typeof(DayOfWeek))]
@@ -24,9 +24,8 @@ namespace SementesApplication
         public string Phone { get; set; }
         public string Email { get; set; }
 
-        //Navigations
-        public virtual ICollection<Job> Jobs { get; set; } //Navigation One Entity Has Many Actions
-
+       //One Entity Has many Jobs
+        public ICollection<Job> Jobs { get; set; } 
 
     }
 }

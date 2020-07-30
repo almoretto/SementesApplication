@@ -6,9 +6,16 @@ namespace SementesApplication
     public class Team
     {
         [Key]
-        public int TeamID { get; set; }
-        public List<Volunteer> Volunteer { get; set; } = new List<Volunteer>();
+        public int TeamId { get; set; }
+        public List<Volunteer> Volunteers { get; set; } = new List<Volunteer>();
 
-        public virtual Job Job { get; set; }
+        //Relation Many to Many Auxiliary Class TeamVolunteer
+        public ICollection<TeamVolunteer> TeamVolunteer { get; set; }
+       
+        //Relation One Job Has one Team
+        public int JobId { get; set; }
+        public Job Job { get; set; }
+
+        
     }
 }

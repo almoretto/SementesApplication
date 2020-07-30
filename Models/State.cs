@@ -10,6 +10,6 @@ namespace SementesApplication
         public string UFAbreviation { get; set; }
         public string UFName { get; set; }
 
-        public virtual ICollection<City> City { get; set; } //Navigation many Cities to 1 State
+        public ICollection<City> Cities { get; set; } //Relation many Cities to 1 State
     }
 }

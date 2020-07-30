@@ -7,7 +7,7 @@ namespace SementesApplication
     public class Job
     {
         [Key]
-        public int JobID { get; set; }
+        public int JobId { get; set; }
         
         [DataType(DataType.Date)]
         public DateTime JobDay { get; set; }
@@ -15,7 +15,13 @@ namespace SementesApplication
 
         [EnumDataType(typeof(ActionKind))]
         public ActionKind ActionKind { get; set; }
-        public AssistedEntities AssistedEntities { get; set; }
+
+        //Onde Entity has many Jobs
+        public int EntityId { get; set; }
+        public Entity Entity { get; set; }
+
+        //Relation one Job has one Team
+        public int TeamId { get; set; }
         public Team Team { get; set; }
        
 

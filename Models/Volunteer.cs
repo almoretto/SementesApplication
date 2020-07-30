@@ -9,7 +9,7 @@ namespace SementesApplication
     public class Volunteer
     {
         [Key]
-        public int VolunteerID { get; set; }
+        public int VolunteerId { get; set; }
         public string VDocCPF { get; set; }
         public string VDocRG { get; set; }
         public string VName { get; set; }
@@ -23,13 +23,18 @@ namespace SementesApplication
         public string VEmail { get; set; }
         public string VSocialMidiaProfile { get; set; }
         public bool VActive { get; set; }
+
+        //Relationship One volunteer has one Address
+        public int AddressId { get; set; }
         public Address Address { get; set; }
 
-        //Navigation
-        public virtual ICollection<TeamSchedule> TeamSchedules { get; set; } //Navigation 1 volunteer has many TeamSchedule
+        //One Volunteers Has Many TeamSchedule
+        public ICollection<TeamSchedule> TeamSchedules { get; set; } 
        
+        //Relation Many Volunteers Has Many Teams
+        public ICollection<TeamVolunteer> TeamVolunteer { get; set; }
                
-        private void AgeCalculator()
+        public void AgeCalculator()
         {
             int age = DateTime.Now.Year - VBirthDate.Year;
             if (DateTime.Now.DayOfYear < VBirthDate.DayOfYear)

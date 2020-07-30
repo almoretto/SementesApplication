@@ -5,7 +5,7 @@ namespace SementesApplication
     public class Address
     {
         [Key]
-        public int AddressID { get; set; }
+        public int AddressId { get; set; }
 
         [EnumDataType(typeof(AddressKind))]
         public AddressKind AddressKind { get; set; }
@@ -13,11 +13,13 @@ namespace SementesApplication
         public string  Number { get; set; }
         public string District { get; set; }
         public string Complement { get; set; }
-
+        
+        //Relationship One City has Many Address
+        public int CityId { get; set; }
         public City City { get; set; }
 
-        //Navigation
-        public virtual Volunteer  Volunteer { get; set; } //Navigation 1 to 1 with volunte
+        //Relationship one Volunteer has one address
+        public Volunteer  Volunteer { get; set; } //Navigation 1 to 1 with volunte
 
         
     }

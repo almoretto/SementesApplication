@@ -7,14 +7,17 @@ namespace SementesApplication
     public class City
     {
         [Key]
-        public int CityID { get; set; }
+        public int CityId { get; set; }
         public string CityName { get; set; }
+
+        //Relationship Between City and State - One State has many cities
+        public int StateId { get; set; }
         public State State { get; set; }
 
-        //Navigation
-        public virtual ICollection<Address> Addresses { get; set; } //Navigation many address to 1 city
-       
-       
+        //Relationship one City Has Many Address
+        public ICollection<Address> Addresses { get; set; } //Relashionship
+        
+
 
     }
 }

@@ -9,9 +9,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Controllers\**" />
     <Compile Remove="Controller\**" />
+    <Content Remove="Controllers\**" />
     <Content Remove="Controller\**" />
+    <EmbeddedResource Remove="Controllers\**" />
     <EmbeddedResource Remove="Controller\**" />
+    <None Remove="Controllers\**" />
     <None Remove="Controller\**" />
   </ItemGroup>
 
@@ -36,7 +40,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Migrations\" />
     <Folder Include="Pages\Address\" />
     <Folder Include="Pages\AssistedEntities\" />
     <Folder Include="Pages\City\" />

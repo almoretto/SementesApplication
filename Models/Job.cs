@@ -15,15 +15,17 @@ namespace SementesApplication
 
         [EnumDataType(typeof(ActionKind))]
         public ActionKind ActionKind { get; set; }
-
+        public int MaxVolunteer { get; private set; }
         //Onde Entity has many Jobs
         public int EntityId { get; set; }
         public Entity Entity { get; set; }
 
         //Relation one Job has one Team
-        public int TeamId { get; set; }
         public Team Team { get; set; }
        
-
+        public void SetMaxVolunteer()
+        {
+            MaxVolunteer = Entity.MaxVolunteer;
+        }
     }
 }

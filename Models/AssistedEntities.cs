@@ -7,28 +7,26 @@ namespace SementesApplication
     public class AssistedEntities
     {
         [Key]
-        public int AssistedEntitiesID { get; set; }
-        public string AssistedEntitiesName { get; set; }
+        public int EntityID { get; set; }
+        public string EntityName { get; set; }
 
         [EnumDataType(typeof(DayOfWeek))]
-        public DayOfWeek AssistedEntitiesVisitDay { get; set; }
-        
+        public DayOfWeek VisitDay { get; set; }
+
         [DataType(DataType.Date)]
-        public DateTime AssistedEntitiesVisitTime { get; set; }
-        public TimeSpan AssistedEntitiesVisitDuration { get; set; }
+        public DateTime VisitTime { get; set; }
+        public TimeSpan VisitDuration { get; set; }
 
         [EnumDataType(typeof(VisitScale))]
-        public VisitScale AssitedEntitiesVisitScale { get; set; }
-
-        [EnumDataType(typeof(VisitMaximumPeople))]
-        public VisitMaximumPeople AssistedEntitiesMaxVolunteer { get; set; }
-        public string AssistedEntitiesContact { get; set; }
-        public string ContactPhone { get; set; }
-        public string ContactEmail { get; set; }
+        public VisitScale VisitScale { get; set; }
+        public int MaxVolunteer { get; set; }
+        public string Contact { get; set; }
+        public string Phone { get; set; }
+        public string Email { get; set; }
 
         //Navigations
         public virtual ICollection<Job> Jobs { get; set; } //Navigation One Entity Has Many Actions
 
-       
+
     }
 }

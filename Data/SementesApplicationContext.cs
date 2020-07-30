@@ -22,6 +22,7 @@ namespace SementesApplication.Data
         public DbSet<Volunteer> Volunteer { get; set; }
         public DbSet<TeamSchedule> TeamSchedule { get; set; }
         public DbSet<Team> Team { get; set; }
+        public DbSet<State> State { get; set; }
 
        
     }

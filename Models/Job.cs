@@ -15,11 +15,8 @@ namespace SementesApplication
 
         [EnumDataType(typeof(ActionKind))]
         public ActionKind ActionKind { get; set; }
-        public int AssistedEntitiesID { get; set; }
-        public int TeamID { get; set; }
-
-        public virtual Team Team { get; set; } //Navigation 1 team action has many volunteers
-        public virtual AssistedEntities AssitedEntity { get; set; }
+        public AssistedEntities AssistedEntities { get; set; }
+        public Team Team { get; set; }
        
 
     }

@@ -5,8 +5,8 @@
         Mensal,
         Bimestral,
         Trimestral,
-        PorConvite,
-        ApresentacaoUnica
+        Convite,
+        Apresentacao
 
     }
    

@@ -2,12 +2,12 @@
 {
     public enum AddressKind : int
     {
-        Rua,
-        Avenida,
-        Alameda,
-        Travessa,
-        Rodovia,
-        Praça
+        R,
+        Av,
+        Al,
+        Tr,
+        Rdv,
+        Pr
         
 
     }

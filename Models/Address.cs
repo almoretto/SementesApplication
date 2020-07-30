@@ -9,15 +9,15 @@ namespace SementesApplication
 
         [EnumDataType(typeof(AddressKind))]
         public AddressKind AddressKind { get; set; }
-        public string AddressDesignation { get; set; }
-        public string  AddressNumber { get; set; }
-        public string AddressDistrict { get; set; }
-        public string AddressComplement { get; set; }
-        public int CityID { get; set; }
+        public string Designation { get; set; }
+        public string  Number { get; set; }
+        public string District { get; set; }
+        public string Complement { get; set; }
+
+        public City City { get; set; }
 
         //Navigation
-        public virtual Volunteer  Volunteer { get; set; } //Navigation 1 to 1 with volunteer
-        public virtual City City { get; set; } //Navigation many address to 1 city
+        public virtual Volunteer  Volunteer { get; set; } //Navigation 1 to 1 with volunte
 
         
     }

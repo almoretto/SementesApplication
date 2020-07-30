@@ -9,12 +9,9 @@ namespace SementesApplication
         public int TeamScheduleID { get; set; }
        
         [DataType(DataType.Date)]
-        public DateTime TeamScheduleDate { get; set; }
-        public char TeamSchedulePeriod { get; set; }
-        public int VolunteerId { get; set; }
-
-        //Navigations
-        public virtual Volunteer Volunteer { get; set; } //Navigation 1 volunteer has many TeamSchedule
+        public DateTime TSDate { get; set; }
+        public char TSPeriod { get; set; }
+        public Volunteer Volunteer { get; set; }
        
        
     }

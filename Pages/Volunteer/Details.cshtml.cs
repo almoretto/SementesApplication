@@ -25,7 +25,11 @@ namespace SementesApplication
             }
 
             Volunteer = await _context.Volunteer
-                .Include(v => v.Address).FirstOrDefaultAsync(m => m.VolunteerId == id);
+                .Include(v => v.Address)
+                .ThenInclude(e => e.City)
+                .ThenInclude(f => f.State)
+                .AsNoTracking()
+                .FirstOrDefaultAsync(m => m.VolunteerId == id);
 
             if (Volunteer == null)
             {

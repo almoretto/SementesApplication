@@ -23,9 +23,13 @@ namespace SementesApplication
             {
                 return NotFound();
             }
-
+            //Navigation like a select
             Team = await _context.Team
-                .Include(t => t.Job).FirstOrDefaultAsync(m => m.TeamId == id);
+                .Include(t => t.Job)
+                .Include(e => e.TeamVolunteer)
+                .Include(f => f.Volunteers)
+                .AsNoTracking()
+                .FirstOrDefaultAsync(m => m.TeamId == id);
 
             if (Team == null)
             {

@@ -18,6 +18,28 @@
             @Html.DisplayFor(model => model.Team.Job.JobId)
         </dd>
     </dl>
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Team.TeamVolunteer)
+        </dt>
+        <dd class="col-sm-10">
+            <table class="table">
+                <tr>
+                    <th>Course Title</th>
+                    <th>Grade</th>
+                </tr>
+                @*foreach to show each volunteer in team*@
+                @foreach (var item in Model.Team.TeamVolunteer)
+                {
+                    <tr>
+                        <td> 
+                            @Html.DisplayFor(modelItem => item.Volunteer.VName)
+                        </td>
+                    </tr>
+                }
+            </table>
+        </dd>
+    </dl>
 </div>
 <div>
     <a asp-page="./Edit" asp-route-id="@Model.Team.TeamId">Edit</a> |

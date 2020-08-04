@@ -25,7 +25,9 @@ namespace SementesApplication
             }
 
             Job = await _context.Job
-                .Include(j => j.Entity).FirstOrDefaultAsync(m => m.JobId == id);
+                .Include(j => j.Entity)
+                .AsNoTracking()
+                .FirstOrDefaultAsync(m => m.JobId == id);
 
             if (Job == null)
             {

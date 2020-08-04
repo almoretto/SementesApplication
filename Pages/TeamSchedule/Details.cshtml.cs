@@ -25,7 +25,9 @@ namespace SementesApplication
             }
 
             TeamSchedule = await _context.TeamSchedule
-                .Include(t => t.Volunteer).FirstOrDefaultAsync(m => m.TeamScheduleId == id);
+                .Include(t => t.Volunteer)
+                .AsNoTracking()
+                .FirstOrDefaultAsync(m => m.TeamScheduleId == id);
 
             if (TeamSchedule == null)
             {

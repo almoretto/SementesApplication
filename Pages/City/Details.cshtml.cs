@@ -25,7 +25,7 @@ namespace SementesApplication
             }
 
             City = await _context.City
-                .Include(c => c.State).FirstOrDefaultAsync(m => m.CityId == id);
+                .Include(c => c.State).AsNoTracking().FirstOrDefaultAsync(m => m.CityId == id);
 
             if (City == null)
             {

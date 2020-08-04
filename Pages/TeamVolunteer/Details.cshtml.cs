@@ -26,7 +26,9 @@ namespace SementesApplication
 
             TeamVolunteer = await _context.TeamVolunteer
                 .Include(t => t.Team)
-                .Include(t => t.Volunteer).FirstOrDefaultAsync(m => m.TeamVolunteerId == id);
+                .Include(t => t.Volunteer)
+                .AsNoTracking()
+                .FirstOrDefaultAsync(m => m.TeamVolunteerId == id);
 
             if (TeamVolunteer == null)
             {

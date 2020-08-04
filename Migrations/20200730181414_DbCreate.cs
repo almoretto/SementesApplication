@@ -8,7 +8,7 @@ namespace SementesApplication.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "AssistedEntities",
+                name: "Entity",
                 columns: table => new
                 {
                     EntityId = table.Column<int>(nullable: false)
@@ -60,7 +60,7 @@ namespace SementesApplication.Migrations
                     table.ForeignKey(
                         name: "FK_Job_AssistedEntities_EntityId",
                         column: x => x.EntityId,
-                        principalTable: "AssistedEntities",
+                        principalTable: "Entity",
                         principalColumn: "EntityId",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -287,7 +287,7 @@ namespace SementesApplication.Migrations
                 name: "State");
 
             migrationBuilder.DropTable(
-                name: "AssistedEntities");
+                name: "Entity");
         }
     }
 }

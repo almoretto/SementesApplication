@@ -1,0 +1,84 @@
+﻿@page
+@model SementesApplication.IndexEntity
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Entity[0].EntityName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Entity[0].VisitDay)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Entity[0].VisitTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Entity[0].VisitDuration)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Entity[0].VisitScale)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Entity[0].MaxVolunteer)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Entity[0].Contact)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Entity[0].Phone)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Entity[0].Email)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Entity) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.EntityName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.VisitDay)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.VisitTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.VisitDuration)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.VisitScale)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MaxVolunteer)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Contact)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Phone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.EntityId">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.EntityId">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.EntityId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

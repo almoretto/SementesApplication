@@ -18,7 +18,7 @@ namespace SementesApplication.Data
 
         public DbSet<Address> Address { get; set; }
         public DbSet<City> City { get; set; }
-        public DbSet<Entity> AssistedEntities { get; set; }
+        public DbSet<Entity> Entity { get; set; }
         public DbSet<Job> Job { get; set; }
         public DbSet<State> State { get; set; }
         public DbSet<Team> Team { get; set; }
@@ -26,9 +26,14 @@ namespace SementesApplication.Data
         public DbSet<TeamVolunteer> TeamVolunteer { get; set; }
         public DbSet<Volunteer> Volunteer { get; set; }
 
-        /*
+        
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+
+
+
+
+            /*
             modelBuilder.Entity<City>()
                 .HasOne(p => p.State)
                 .WithMany(b => b.Cities)
@@ -36,7 +41,7 @@ namespace SementesApplication.Data
             modelBuilder.Entity<Address>()
                 .HasOne(p => p.City)
                 .WithMany(b => b.Addresses)
-                .HasForeignKey(p => p.City.CityID);
-        }*/
+                .HasForeignKey(p => p.City.CityID);*/
+        }
     }
 }

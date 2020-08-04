@@ -39,14 +39,4 @@
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.3" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Pages\Address\" />
-    <Folder Include="Pages\AssistedEntities\" />
-    <Folder Include="Pages\City\" />
-    <Folder Include="Pages\Job\" />
-    <Folder Include="Pages\TeamSchedule\" />
-    <Folder Include="Pages\Team\" />
-    <Folder Include="Pages\Volunteer\" />
-  </ItemGroup>
-
 </Project>

@@ -16,7 +16,7 @@ namespace SementesApplication
                 // Look for any States.
                 if (context.State.Any())
                 {
-                    
+                    return;   // DB has been seeded
                 }
                 else
                 {
@@ -162,7 +162,7 @@ namespace SementesApplication
                 // Look for any States.
                 if (context.State.Any())
                 {
-
+                    return;   // DB has been seeded
                 }
                 else
                 {

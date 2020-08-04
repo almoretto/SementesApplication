@@ -109,7 +109,7 @@ namespace SementesApplication.Migrations
 
                     b.HasKey("EntityId");
 
-                    b.ToTable("AssistedEntities");
+                    b.ToTable("Entity");
                 });
 
             modelBuilder.Entity("SementesApplication.Job", b =>

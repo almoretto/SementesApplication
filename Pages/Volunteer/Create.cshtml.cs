@@ -28,15 +28,30 @@ namespace SementesApplication
         // more details, see https://aka.ms/RazorPagesCRUD.
         public async Task<IActionResult> OnPostAsync()
         {
-            if (!ModelState.IsValid)
+            var emptySVolunteer = new Volunteer();
+            if (await TryUpdateModelAsync<Volunteer>(
+                emptySVolunteer,
+                "Volunteer",   // Prefix for form value.
+                s => s.VName,
+                s => s.VDocCPF,
+                s => s.VDocRG,
+                s => s.AddressId,
+                s=>s.VActive,
+                s=>s.VBirthDate,
+                s=>s.VEmail,
+                s=>s.VPhone,
+                s=>s.VMessagePhone,
+                s=>s.VResumee,
+                s=>s.VSocialMidiaProfile))
+                
             {
-                return Page();
+                emptySVolunteer.AgeCalculator();
+                _context.Volunteer.Add(emptySVolunteer);
+                await _context.SaveChangesAsync();
+                return RedirectToPage("./Index");
             }
 
-            _context.Volunteer.Add(Volunteer);
-            await _context.SaveChangesAsync();
-
-            return RedirectToPage("./Index");
+            return Page();
         }
     }
 }

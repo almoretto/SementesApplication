@@ -17,7 +17,7 @@ namespace SementesApplication
 
         public IActionResult OnGet()
         {
-        ViewData["StateId"] = new SelectList(_context.State, "StateId", "StateId");
+        ViewData["StateId"] = new SelectList(_context.State, "StateId", "UFName");
             return Page();
         }
 

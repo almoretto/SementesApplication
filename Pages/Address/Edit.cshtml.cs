@@ -34,7 +34,7 @@ namespace SementesApplication
             {
                 return NotFound();
             }
-           ViewData["CityId"] = new SelectList(_context.City, "CityId", "CityId");
+           ViewData["CityId"] = new SelectList(_context.City, "CityId", "CityName");
             return Page();
         }
 

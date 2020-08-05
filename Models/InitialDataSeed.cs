@@ -6,7 +6,7 @@ using System.Linq;
 
 namespace SementesApplication
 {
-    public class InitialDataSeed
+    public static class InitialDataSeed
     {
         public static void Initialize(IServiceProvider serviceProvider)
         {
@@ -160,13 +160,40 @@ namespace SementesApplication
                         
                 }
                 // Look for any States.
-                if (context.State.Any())
+                if (context.City.Any())
                 {
                     return;   // DB has been seeded
                 }
                 else
                 {
-                        
+                    context.City.AddRange(
+                        new City
+                        {
+                            CityName = "São José do Rio Preto",
+                            StateId = 25
+                        },
+                        new City
+                        {
+                            CityName = "Mirassol",
+                            StateId = 25
+                        },
+                        new City
+                        {
+                            CityName = "Bady Bassit",
+                            StateId = 25
+                        },
+                        new City
+                        {
+                            CityName = "José Bonifácio",
+                            StateId = 25
+                        },
+                        new City
+                        {
+                            CityName = "Ubarana",
+                            StateId = 25
+                        }
+                        );
+                    context.SaveChanges();
                 }
 
             
@@ -175,28 +202,3 @@ namespace SementesApplication
         }
     }
 }
-/*
-                new Movie
-                {
-                    Title = "Ghostbusters ",
-                    ReleaseDate = DateTime.Parse("1984-3-13"),
-                    Genre = "Comedy",
-                    Price = 8.99M
-                },
-
-                    new Movie
-                    {
-                        Title = "Ghostbusters 2",
-                        ReleaseDate = DateTime.Parse("1986-2-23"),
-                        Genre = "Comedy",
-                        Price = 9.99M
-                    },
-
-                    new Movie
-                    {
-                        Title = "Rio Bravo",
-                        ReleaseDate = DateTime.Parse("1959-4-15"),
-                        Genre = "Western",
-                        Price = 3.99M
-                    }
-                );*/

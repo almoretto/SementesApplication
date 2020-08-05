@@ -16,6 +16,7 @@ namespace SementesApplication
 
         //Relationship one City Has Many Address
         public ICollection<Address> Addresses { get; set; } //Relashionship
+      //  public virtual ICollection<State>States { get; set; }
         
 
 

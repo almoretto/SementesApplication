@@ -17,7 +17,7 @@ namespace SementesApplication
 
         public IActionResult OnGet()
         {
-        ViewData["EntityId"] = new SelectList(_context.Entity, "EntityId", "EntityId");
+            ViewData["EntityId"] = new SelectList(_context.Entity, "EntityId", "EntityId");
             return Page();
         }
 
@@ -28,15 +28,24 @@ namespace SementesApplication
         // more details, see https://aka.ms/RazorPagesCRUD.
         public async Task<IActionResult> OnPostAsync()
         {
-            if (!ModelState.IsValid)
+            var emptyJob = new Job();
+
+            if (await TryUpdateModelAsync<Job>(
+                emptyJob,
+                "Job",   // Prefix for form value.
+                s => s.JobDay, 
+                s => s.JobPeriod, 
+                s => s.MaxVolunteer, 
+                s=>s.ActionKind, 
+                s=>s.EntityId))
             {
-                return Page();
+                _context.Job.Add(emptyJob);
+                await _context.SaveChangesAsync();
+                return RedirectToPage("./Index");
             }
 
-            _context.Job.Add(Job);
-            await _context.SaveChangesAsync();
+            return Page();
 
-            return RedirectToPage("./Index");
         }
     }
 }

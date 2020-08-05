@@ -14,6 +14,9 @@
     <thead>
         <tr>
             <th>
+                @Html.DisplayNameFor(model => model.State[0].StateId)
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.State[0].UFAbreviation)
             </th>
             <th>
@@ -23,20 +26,24 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model.State) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.UFAbreviation)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.UFName)
-            </td>
-            <td>
-                <a asp-page="./Edit" asp-route-id="@item.StateId">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.StateId">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.StateId">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model.State)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelitem => item.StateId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UFAbreviation)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UFName)
+                </td>
+                <td>
+                    <a asp-page="./Edit" asp-route-id="@item.StateId">Edit</a> |
+                    <a asp-page="./Details" asp-route-id="@item.StateId">Details</a> |
+                    <a asp-page="./Delete" asp-route-id="@item.StateId">Delete</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>

@@ -28,13 +28,15 @@ namespace SementesApplication
             }
 
             City = await _context.City
-                .Include(c => c.State).FirstOrDefaultAsync(m => m.CityId == id);
+                .Include(c => c.State)
+                .AsNoTracking()
+                .FirstOrDefaultAsync(m => m.CityId == id);
 
             if (City == null)
             {
                 return NotFound();
             }
-           ViewData["StateId"] = new SelectList(_context.State, "StateId", "StateId");
+           ViewData["StateId"] = new SelectList(_context.State, "StateId", "UFName");
             return Page();
         }
 

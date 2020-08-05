@@ -17,7 +17,7 @@ namespace SementesApplication
 
         public IActionResult OnGet()
         {
-        ViewData["VolunteerId"] = new SelectList(_context.Volunteer, "VolunteerId", "VolunteerId");
+            ViewData["VolunteerId"] = new SelectList(_context.Volunteer, "VolunteerId", "VolunteerId");
             return Page();
         }
 
@@ -28,15 +28,23 @@ namespace SementesApplication
         // more details, see https://aka.ms/RazorPagesCRUD.
         public async Task<IActionResult> OnPostAsync()
         {
-            if (!ModelState.IsValid)
+            var emptyTeamSchedule = new TeamSchedule();
+
+            if (await TryUpdateModelAsync<TeamSchedule>(
+                emptyTeamSchedule,
+                "TeamSchedule",   // Prefix for form value.
+                s => s.TSDate,
+                s => s.TSPeriod,
+                s => s.VolunteerId))
+
             {
-                return Page();
+                _context.TeamSchedule.Add(emptyTeamSchedule);
+                await _context.SaveChangesAsync();
+                return RedirectToPage("./Index");
             }
 
-            _context.TeamSchedule.Add(TeamSchedule);
-            await _context.SaveChangesAsync();
+            return Page();
 
-            return RedirectToPage("./Index");
         }
     }
 }

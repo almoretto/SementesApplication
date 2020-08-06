@@ -28,7 +28,7 @@ namespace SementesApplication
             }
 
             Job = await _context.Job
-                .Include(j => j.Entity).FirstOrDefaultAsync(m => m.JobId == id);
+                .Include(j => j.Entity).FirstAsync(m => m.JobId == id);
 
             if (Job == null)
             {
@@ -40,18 +40,37 @@ namespace SementesApplication
 
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://aka.ms/RazorPagesCRUD.
-        public async Task<IActionResult> OnPostAsync()
+        public async Task<IActionResult> OnPostAsync(int id)
         {
+            var jobToUpdate = await _context.Job.FindAsync(id);
+
             if (!ModelState.IsValid)
             {
                 return Page();
             }
+            if (jobToUpdate==null)
+            {
+                return NotFound();
+            }
 
-            _context.Attach(Job).State = EntityState.Modified;
+            //_context.Attach(Job).State = EntityState.Modified;
 
             try
             {
-                await _context.SaveChangesAsync();
+                if (await TryUpdateModelAsync<Job>(
+                    jobToUpdate,
+                    "Job",
+                    s=>s.JobDay,
+                    s=>s.JobPeriod,
+                    s=>s.ActionKind,
+                    s=>s.MaxVolunteer,
+                    s=>s.EntityId))
+                {
+                    await _context.SaveChangesAsync();
+                    return RedirectToPage("./Index");
+                }
+                
+                // await _context.SaveChangesAsync();
             }
             catch (DbUpdateConcurrencyException)
             {
@@ -64,8 +83,8 @@ namespace SementesApplication
                     throw;
                 }
             }
-
-            return RedirectToPage("./Index");
+            //return RedirectToPage("./Index");
+            return Page();
         }
 
         private bool JobExists(int id)

@@ -28,30 +28,49 @@ namespace SementesApplication
             }
 
             Address = await _context.Address
-                .Include(a => a.City).FirstOrDefaultAsync(m => m.AddressId == id);
+                .Include(a => a.City).FirstAsync(m => m.AddressId == id);
 
             if (Address == null)
             {
                 return NotFound();
             }
-           ViewData["CityId"] = new SelectList(_context.City, "CityId", "CityName");
+            ViewData["CityId"] = new SelectList(_context.City, "CityId", "CityName");
             return Page();
         }
 
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://aka.ms/RazorPagesCRUD.
-        public async Task<IActionResult> OnPostAsync()
+        public async Task<IActionResult> OnPostAsync(int id)
         {
+            var addressToUpdate = await _context.Address.FindAsync(id);
+
             if (!ModelState.IsValid)
             {
                 return Page();
             }
+            if (addressToUpdate == null)
+            {
+                return NotFound();
+            }
 
-            _context.Attach(Address).State = EntityState.Modified;
+            //_context.Attach(Address).State = EntityState.Modified;
 
             try
             {
-                await _context.SaveChangesAsync();
+                if (await TryUpdateModelAsync<Address>(
+                    addressToUpdate,
+                    "Address",
+                    s => s.AddressKind,
+                    s => s.Designation,
+                    s => s.Number,
+                    s => s.Complement,
+                    s => s.District,
+                    s => s.CityId))
+                {
+                    await _context.SaveChangesAsync();
+                    return RedirectToPage("./Index");
+                }
+                //await _context.SaveChangesAsync();
             }
             catch (DbUpdateConcurrencyException)
             {
@@ -65,7 +84,7 @@ namespace SementesApplication
                 }
             }
 
-            return RedirectToPage("./Index");
+            return Page();
         }
 
         private bool AddressExists(int id)

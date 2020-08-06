@@ -30,30 +30,41 @@ namespace SementesApplication
             City = await _context.City
                 .Include(c => c.State)
                 .AsNoTracking()
-                .FirstOrDefaultAsync(m => m.CityId == id);
+                .FirstAsync(m => m.CityId == id);
 
             if (City == null)
             {
                 return NotFound();
             }
-           ViewData["StateId"] = new SelectList(_context.State, "StateId", "UFName");
+            ViewData["StateId"] = new SelectList(_context.State, "StateId", "UFName");
             return Page();
         }
 
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://aka.ms/RazorPagesCRUD.
-        public async Task<IActionResult> OnPostAsync()
+        public async Task<IActionResult> OnPostAsync(int id)
         {
+            var cityToUpdate = await _context.City.FindAsync(id);
+
             if (!ModelState.IsValid)
             {
                 return Page();
             }
-
-            _context.Attach(City).State = EntityState.Modified;
+            if (cityToUpdate == null)
+            {
+                return NotFound();
+            }
 
             try
             {
-                await _context.SaveChangesAsync();
+                if (await TryUpdateModelAsync<City>(
+                   cityToUpdate,
+                   "State",
+                   s => s.CityName, s => s.StateId))
+                {
+                    await _context.SaveChangesAsync();
+                    return RedirectToPage("./Index");
+                }
             }
             catch (DbUpdateConcurrencyException)
             {
@@ -67,7 +78,7 @@ namespace SementesApplication
                 }
             }
 
-            return RedirectToPage("./Index");
+            return Page();
         }
 
         private bool CityExists(int id)

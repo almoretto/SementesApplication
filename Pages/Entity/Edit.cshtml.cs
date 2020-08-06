@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using System.Security.AccessControl;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -26,7 +27,7 @@ namespace SementesApplication
                 return NotFound();
             }
 
-            Entity = await _context.Entity.FirstOrDefaultAsync(m => m.EntityId == id);
+            Entity = await _context.Entity.FirstAsync(m => m.EntityId == id);
 
             if (Entity == null)
             {
@@ -37,18 +38,39 @@ namespace SementesApplication
 
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://aka.ms/RazorPagesCRUD.
-        public async Task<IActionResult> OnPostAsync()
+        public async Task<IActionResult> OnPostAsync(int id)
         {
+            var entityToUpdate = await _context.Entity.FindAsync(id);
+
             if (!ModelState.IsValid)
             {
                 return Page();
             }
+            if (entityToUpdate == null)
+            {
+                return NotFound();
+            }
 
-            _context.Attach(Entity).State = EntityState.Modified;
+            //_context.Attach(Entity).State = EntityState.Modified;
 
             try
             {
-                await _context.SaveChangesAsync();
+                if (await TryUpdateModelAsync<Entity>(
+                    entityToUpdate,
+                    "Entity",
+                    s => s.EntityName,
+                    s => s.VisitDay,
+                    s => s.VisitTime,
+                    s => s.VisitDuration,
+                    s => s.VisitScale,
+                    s => s.MaxVolunteer,
+                    s => s.Contact,
+                    s => s.Phone,
+                    s => s.Email))
+                {
+
+                }
+                //await _context.SaveChangesAsync();
             }
             catch (DbUpdateConcurrencyException)
             {

@@ -26,7 +26,7 @@ namespace SementesApplication
                 return NotFound();
             }
 
-            State = await _context.State.FirstOrDefaultAsync(m => m.StateId == id);
+            State = await _context.State.FirstAsync(m => m.StateId == id);
 
             if (State == null)
             {
@@ -37,18 +37,28 @@ namespace SementesApplication
 
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://aka.ms/RazorPagesCRUD.
-        public async Task<IActionResult> OnPostAsync()
+        public async Task<IActionResult> OnPostAsync(int id)
         {
+            var stateToUpdate = await _context.State.FindAsync(id);
+
             if (!ModelState.IsValid)
             {
                 return Page();
             }
-
-            _context.Attach(State).State = EntityState.Modified;
-
+            if (stateToUpdate == null)
+            {
+                return NotFound();
+            }
             try
             {
-                await _context.SaveChangesAsync();
+                if (await TryUpdateModelAsync<State>(
+                 stateToUpdate,
+                 "State",
+                 s => s.UFName, s => s.UFAbreviation))
+                {
+                    await _context.SaveChangesAsync();
+                    return RedirectToPage("./Index");
+                }
             }
             catch (DbUpdateConcurrencyException)
             {
@@ -62,8 +72,8 @@ namespace SementesApplication
                 }
             }
 
-            return RedirectToPage("./Index");
-        }
+            return Page();
+        }//End Task
 
         private bool StateExists(int id)
         {

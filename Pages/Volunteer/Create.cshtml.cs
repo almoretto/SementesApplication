@@ -17,7 +17,7 @@ namespace SementesApplication
 
         public IActionResult OnGet()
         {
-        ViewData["AddressId"] = new SelectList(_context.Address, "AddressId", "AddressId");
+        ViewData["AddressId"] = new SelectList(_context.Address, "AddressId", "Designation");
             return Page();
         }
 

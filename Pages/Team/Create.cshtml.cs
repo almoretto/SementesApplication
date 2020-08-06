@@ -17,7 +17,7 @@ namespace SementesApplication
 
         public IActionResult OnGet()
         {
-        ViewData["JobId"] = new SelectList(_context.Job, "JobId", "JobId");
+            ViewData["JobId"] = new SelectList(_context.Job, "JobId", "JobDate", "Job.Entity.EntityName");
             return Page();
         }
 

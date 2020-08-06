@@ -29,31 +29,46 @@ namespace SementesApplication
 
             TeamVolunteer = await _context.TeamVolunteer
                 .Include(t => t.Team)
-                .Include(t => t.Volunteer).FirstOrDefaultAsync(m => m.TeamVolunteerId == id);
+                .Include(t => t.Volunteer).FirstAsync(m => m.TeamVolunteerId == id);
 
             if (TeamVolunteer == null)
             {
                 return NotFound();
             }
            ViewData["TeamId"] = new SelectList(_context.Team, "TeamId", "TeamId");
-           ViewData["VolunteerId"] = new SelectList(_context.Volunteer, "VolunteerId", "VolunteerId");
+           ViewData["VolunteerId"] = new SelectList(_context.Volunteer, "VolunteerId", "Vname");
             return Page();
         }
 
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://aka.ms/RazorPagesCRUD.
-        public async Task<IActionResult> OnPostAsync()
+        public async Task<IActionResult> OnPostAsync(int id)
         {
+            var teamVolunteerToUpdate = await _context.TeamVolunteer.FindAsync(id);
+
             if (!ModelState.IsValid)
             {
                 return Page();
             }
+            if (teamVolunteerToUpdate==null)
+            {
+                return NotFound();
+            }
 
-            _context.Attach(TeamVolunteer).State = EntityState.Modified;
+            //_context.Attach(TeamVolunteer).State = EntityState.Modified;
 
             try
             {
-                await _context.SaveChangesAsync();
+                if (await TryUpdateModelAsync<TeamVolunteer>(
+                    teamVolunteerToUpdate,
+                    "TeamVolunteer",
+                    s=>s.VolunteerId,
+                    s=>s.TeamId))
+                {
+                    await _context.SaveChangesAsync();
+                    return RedirectToPage("./Index");
+                }
+                //await _context.SaveChangesAsync();
             }
             catch (DbUpdateConcurrencyException)
             {
@@ -66,8 +81,8 @@ namespace SementesApplication
                     throw;
                 }
             }
-
-            return RedirectToPage("./Index");
+            return Page();
+           // return RedirectToPage("./Index");
         }
 
         private bool TeamVolunteerExists(int id)

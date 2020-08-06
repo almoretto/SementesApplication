@@ -34,7 +34,7 @@ namespace SementesApplication
             {
                 return NotFound();
             }
-           ViewData["EntityId"] = new SelectList(_context.Entity, "EntityId", "EntityId");
+           ViewData["EntityId"] = new SelectList(_context.Entity, "EntityId", "EntityName");
             return Page();
         }
 

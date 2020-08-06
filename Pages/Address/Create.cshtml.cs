@@ -20,7 +20,7 @@ namespace SementesApplication
         ViewData["CityId"] = new SelectList(_context.City, "CityId", "CityName");
             return Page();
         }
-
+        
         [BindProperty]
         public Address Address { get; set; }
 

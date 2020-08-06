@@ -28,30 +28,44 @@ namespace SementesApplication
             }
 
             Team = await _context.Team
-                .Include(t => t.Job).FirstOrDefaultAsync(m => m.TeamId == id);
+                .Include(t => t.Job).FirstAsync(m => m.TeamId == id);
 
             if (Team == null)
             {
                 return NotFound();
             }
-           ViewData["JobId"] = new SelectList(_context.Job, "JobId", "JobId");
+           ViewData["JobId"] = new SelectList(_context.Job, "JobId", "JobDay", "EntityId");
             return Page();
         }
 
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://aka.ms/RazorPagesCRUD.
-        public async Task<IActionResult> OnPostAsync()
+        public async Task<IActionResult> OnPostAsync(int id)
         {
+            var teamToUpdate = await _context.Team.FindAsync(id);
+
             if (!ModelState.IsValid)
             {
                 return Page();
             }
-
-            _context.Attach(Team).State = EntityState.Modified;
+            if (teamToUpdate==null)
+            {
+                return NotFound();
+            }
+            //_context.Attach(Team).State = EntityState.Modified;
 
             try
             {
-                await _context.SaveChangesAsync();
+                if (await TryUpdateModelAsync<Team>(
+                    teamToUpdate,
+                    "Team",
+                    s=>s.TeamVolunteer,
+                    s=>s.JobId))
+                {
+                    await _context.SaveChangesAsync();
+                    return RedirectToPage("./Index");
+                }
+                //await _context.SaveChangesAsync();
             }
             catch (DbUpdateConcurrencyException)
             {
@@ -64,8 +78,8 @@ namespace SementesApplication
                     throw;
                 }
             }
-
-            return RedirectToPage("./Index");
+            return Page();
+            //return RedirectToPage("./Index");
         }
 
         private bool TeamExists(int id)

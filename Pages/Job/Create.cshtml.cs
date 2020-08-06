@@ -17,7 +17,7 @@ namespace SementesApplication
 
         public IActionResult OnGet()
         {
-            ViewData["EntityId"] = new SelectList(_context.Entity, "EntityId", "EntityId");
+            ViewData["EntityId"] = new SelectList(_context.Entity, "EntityId", "EntityName");
             return Page();
         }
 

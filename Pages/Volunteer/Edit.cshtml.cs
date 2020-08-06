@@ -28,30 +28,52 @@ namespace SementesApplication
             }
 
             Volunteer = await _context.Volunteer
-                .Include(v => v.Address).FirstOrDefaultAsync(m => m.VolunteerId == id);
+                .Include(v => v.Address).FirstAsync(m => m.VolunteerId == id);
 
             if (Volunteer == null)
             {
                 return NotFound();
             }
-           ViewData["AddressId"] = new SelectList(_context.Address, "AddressId", "AddressId");
+            ViewData["AddressId"] = new SelectList(_context.Address, "AddressId", "Designation");
             return Page();
         }
 
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://aka.ms/RazorPagesCRUD.
-        public async Task<IActionResult> OnPostAsync()
+        public async Task<IActionResult> OnPostAsync(int id)
         {
+            var volunteerToUpdate = await _context.Volunteer.FindAsync(id);
+
             if (!ModelState.IsValid)
             {
                 return Page();
             }
-
-            _context.Attach(Volunteer).State = EntityState.Modified;
+            if (volunteerToUpdate == null)
+            {
+                return NotFound();
+            }
+            //_context.Attach(Volunteer).State = EntityState.Modified;
 
             try
             {
-                await _context.SaveChangesAsync();
+                if (await TryUpdateModelAsync<Volunteer>(
+                    volunteerToUpdate,
+                    "Volunteer",
+                    s => s.VName,
+                    s => s.VDocCPF,
+                    s => s.VDocRG,
+                    s => s.AddressId,
+                    s => s.VActive,
+                    s => s.VBirthDate,
+                    s => s.VEmail,
+                    s => s.VPhone,
+                    s => s.VMessagePhone,
+                    s => s.VResumee,
+                    s => s.VSocialMidiaProfile))
+                {
+                    await _context.SaveChangesAsync();
+                    return RedirectToPage("./Index");
+                }
             }
             catch (DbUpdateConcurrencyException)
             {
@@ -64,8 +86,8 @@ namespace SementesApplication
                     throw;
                 }
             }
-
-            return RedirectToPage("./Index");
+            return Page();
+            //return RedirectToPage("./Index");
         }
 
         private bool VolunteerExists(int id)

@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Data.Entity;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
@@ -17,8 +18,9 @@ namespace SementesApplication
 
         [BindProperty]
         public State State { get; set; }
+        public string ErrorMessage { get; set; }
 
-        public async Task<IActionResult> OnGetAsync(int? id)
+        public async Task<IActionResult> OnGetAsync(int? id, bool? saveChangesError = false)
         {
             if (id == null)
             {
@@ -31,6 +33,10 @@ namespace SementesApplication
             {
                 return NotFound();
             }
+            if (saveChangesError.GetValueOrDefault())
+            {
+                ErrorMessage = "Delete failed. Try again";
+            }
             return Page();
         }
 
@@ -40,16 +46,27 @@ namespace SementesApplication
             {
                 return NotFound();
             }
+            var state = await _context.State.FindAsync(id);
 
-            State = await _context.State.FindAsync(id);
-
-            if (State != null)
+            if (state == null)
             {
-                _context.State.Remove(State);
-                await _context.SaveChangesAsync();
+                return NotFound();
             }
 
-            return RedirectToPage("./Index");
+            try
+            {
+                _context.State.Remove(state);
+                await _context.SaveChangesAsync();
+                return RedirectToPage("./Index");
+            }
+            catch (DbUpdateException /* ex */)
+            {
+                //Log the error (uncomment ex variable name and write a log.)
+                return RedirectToAction("./Delete",
+                                     new { id, saveChangesError = true });
+            }
+            //State = await _context.State.FindAsync(id);
+
         }
     }
 }

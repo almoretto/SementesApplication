@@ -17,8 +17,8 @@ namespace SementesApplication
 
         [BindProperty]
         public City City { get; set; }
-
-        public async Task<IActionResult> OnGetAsync(int? id)
+        public string ErrorMessage { get; set; }
+        public async Task<IActionResult> OnGetAsync(int? id, bool? saveChangesError = false)
         {
             if (id == null)
             {
@@ -32,6 +32,11 @@ namespace SementesApplication
             {
                 return NotFound();
             }
+           
+            if (saveChangesError.GetValueOrDefault())
+            {
+                ErrorMessage = "Delete failed. Try again";
+            }
             return Page();
         }
 
@@ -42,15 +47,25 @@ namespace SementesApplication
                 return NotFound();
             }
 
-            City = await _context.City.FindAsync(id);
+            var city = await _context.City.FindAsync(id);
 
-            if (City != null)
+            if (city == null)
             {
-                _context.City.Remove(City);
+                return NotFound();
+            }
+            try
+            {
+                _context.City.Remove(city);
                 await _context.SaveChangesAsync();
+                return RedirectToPage("./Index");
+            }
+            catch (DbUpdateException /* ex */)
+            {
+                //Log the error (uncomment ex variable name and write a log.)
+                return RedirectToAction("./Delete",
+                                     new { id, saveChangesError = true });
             }
 
-            return RedirectToPage("./Index");
         }
     }
 }

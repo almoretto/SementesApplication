@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using SementesApplication.Data;
 
@@ -21,10 +22,22 @@ namespace SementesApplication
         public string CurrentSort { get; set; }
 
         public IList<State> State { get; set; }
+        public PaginatedList<State> States { get; set; }
 
-        public async Task OnGetAsync(string sortOrder, string searchString)
+        public async Task OnGetAsync(string sortOrder, string searchString, string currentFilter, int? pageIndex)
         {
+            CurrentSort = sortOrder;
+
             UFNameSort = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+
+            if (searchString != null)
+            {
+                pageIndex = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
 
             CurrentFilter = searchString;
             
@@ -44,8 +57,10 @@ namespace SementesApplication
                     stateIQ = stateIQ.OrderBy(s => s.UFName);
                     break;
             }
-
-            State = await stateIQ.AsNoTracking().ToListAsync();
+            int pageSize = 3;
+            State = await PaginatedList<State>.CreateAsync(
+                stateIQ.AsNoTracking(), pageIndex ?? 1, pageSize);
+            //State = await stateIQ.AsNoTracking().ToListAsync();
             //State = await _context.State.ToListAsync();
         }
     }

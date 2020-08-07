@@ -30,9 +30,13 @@
                 @Html.DisplayNameFor(model => model.State[0].UFAbreviation)
             </th>
             <th>
-                <a asp-page="./Index" asp-route-sortOrder="@Model.UFNameSort">
+                <a asp-page="./Index" asp-route-sortOrder="@Model.UFNameSort"
+                   asp-route-currentFilter="@Model.CurrentFilter">
                     @Html.DisplayNameFor(model => model.State[0].UFName)
                 </a>
+                @*<a asp-page="./Index" asp-route-sortOrder="@Model.UFNameSort">
+                        @Html.DisplayNameFor(model => model.State[0].UFName)
+                    </a>*@
             </th>
             <th></th>
         </tr>
@@ -59,3 +63,23 @@
         }
     </tbody>
 </table>
+
+@{
+    var prevDisabled = !Model.States.HasPreviousPage ? "disabled" : "";
+    var nextDisabled = !Model.States.HasNextPage ? "disabled" : "";
+}
+
+<a asp-page="./Index"
+   asp-route-sortOrder="@Model.CurrentSort"
+   asp-route-pageIndex="@(Model.States.PageIndex - 1)"
+   asp-route-currentFilter="@Model.CurrentFilter"
+   class="btn btn-primary @prevDisabled">
+    Previous
+</a>
+<a asp-page="./Index"
+   asp-route-sortOrder="@Model.CurrentSort"
+   asp-route-pageIndex="@(Model.States.PageIndex + 1)"
+   asp-route-currentFilter="@Model.CurrentFilter"
+   class="btn btn-primary @nextDisabled">
+    Next
+</a>

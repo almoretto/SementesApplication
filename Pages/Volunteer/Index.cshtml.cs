@@ -1,4 +1,6 @@
 ﻿using System.Collections.Generic;
+using System.Collections.Immutable;
+using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
@@ -21,6 +23,7 @@ namespace SementesApplication
         {
             Volunteer = await _context.Volunteer
                 .Include(v => v.Address).ToListAsync();
+            //Volunteer.OrderBy(Volunteer);
         }
     }
 }

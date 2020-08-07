@@ -10,6 +10,7 @@
 <h3>Are you sure you want to delete this?</h3>
 <div>
     <h4>Job</h4>
+    <p class="text-danger">@Model.ErrorMessage</p>
     <hr />
     <dl class="row">
         <dt class="col-sm-2">
@@ -43,7 +44,7 @@
             @Html.DisplayFor(model => model.Job.Entity.EntityId)
         </dd>
     </dl>
-    
+
     <form method="post">
         <input type="hidden" asp-for="Job.JobId" />
         <input type="submit" value="Delete" class="btn btn-danger" /> |

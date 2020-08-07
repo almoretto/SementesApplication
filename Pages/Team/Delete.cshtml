@@ -10,6 +10,7 @@
 <h3>Are you sure you want to delete this?</h3>
 <div>
     <h4>Team</h4>
+    <p class="text-danger">@Model.ErrorMessage</p>
     <hr />
     <dl class="row">
         <dt class="col-sm-2">
@@ -19,7 +20,7 @@
             @Html.DisplayFor(model => model.Team.Job.JobId)
         </dd>
     </dl>
-    
+
     <form method="post">
         <input type="hidden" asp-for="Team.TeamId" />
         <input type="submit" value="Delete" class="btn btn-danger" /> |

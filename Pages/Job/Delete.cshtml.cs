@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -18,8 +19,9 @@ namespace SementesApplication
 
         [BindProperty]
         public Job Job { get; set; }
+        public string ErrorMessage { get; set; }
 
-        public async Task<IActionResult> OnGetAsync(int? id)
+        public async Task<IActionResult> OnGetAsync(int? id, bool? saveChangesError = false)
         {
             if (id == null)
             {
@@ -33,6 +35,10 @@ namespace SementesApplication
             {
                 return NotFound();
             }
+            if (saveChangesError.GetValueOrDefault())
+            {
+                ErrorMessage = "Could not perform Delete on Record id: "+id;
+            }
             return Page();
         }
 
@@ -43,15 +49,37 @@ namespace SementesApplication
                 return NotFound();
             }
 
-            Job = await _context.Job.FindAsync(id);
+            var job = await _context.Job.FindAsync(id);
 
-            if (Job != null)
+            try
+            {
+                //Method Remove is called
+                _context.Job.Remove(job);
+                await _context.SaveChangesAsync();
+                return RedirectToPage("./Index");
+            }
+            catch (DbUpdateException ex)
+            {
+                StringBuilder sb = new StringBuilder();
+                sb.AppendLine(ErrorMessage);
+                sb.AppendLine(ex.ToString());
+
+                ErrorMessage = sb.ToString();
+                //Log the error (uncomment ex variable name and write a log.)
+                return RedirectToAction("./Delete",
+                                     new { id, saveChangesError = true });
+                //Log the error (uncomment ex variable name and write a log.)
+                return RedirectToAction("./Delete",
+                                     new { id, saveChangesError = true });
+            }
+            /*if (Job != null)
             {
                 _context.Job.Remove(Job);
                 await _context.SaveChangesAsync();
             }
 
             return RedirectToPage("./Index");
+            */
         }
     }
 }

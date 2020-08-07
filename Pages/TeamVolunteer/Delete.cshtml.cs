@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Text;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
@@ -17,8 +18,9 @@ namespace SementesApplication
 
         [BindProperty]
         public TeamVolunteer TeamVolunteer { get; set; }
+        public string ErrorMessage { get; set; }
 
-        public async Task<IActionResult> OnGetAsync(int? id)
+        public async Task<IActionResult> OnGetAsync(int? id, bool? saveChangesError=false)
         {
             if (id == null)
             {
@@ -33,6 +35,11 @@ namespace SementesApplication
             {
                 return NotFound();
             }
+            if (saveChangesError.GetValueOrDefault())
+            {
+                ErrorMessage = "Coldn´t Delete de Record id: " + id;
+
+            }
             return Page();
         }
 
@@ -43,15 +50,35 @@ namespace SementesApplication
                 return NotFound();
             }
 
-            TeamVolunteer = await _context.TeamVolunteer.FindAsync(id);
+            var teamVolunteer = await _context.TeamVolunteer.FindAsync(id);
 
-            if (TeamVolunteer != null)
+            try
+            {
+                _context.TeamVolunteer.Remove(teamVolunteer);
+                await _context.SaveChangesAsync();
+                return RedirectToPage("./Index");
+
+            }
+            catch (DbUpdateException ex)
+            {
+
+                StringBuilder sb = new StringBuilder();
+                sb.AppendLine(ErrorMessage);
+                sb.AppendLine(ex.ToString());
+
+                ErrorMessage = sb.ToString();
+                //Log the error (uncomment ex variable name and write a log.)
+                return RedirectToAction("./Delete",
+                                     new { id, saveChangesError = true });
+            }
+
+            /*if (TeamVolunteer != null)
             {
                 _context.TeamVolunteer.Remove(TeamVolunteer);
                 await _context.SaveChangesAsync();
             }
 
-            return RedirectToPage("./Index");
+            return RedirectToPage("./Index");*/
         }
     }
 }

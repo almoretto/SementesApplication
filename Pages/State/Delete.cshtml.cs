@@ -1,4 +1,5 @@
 ﻿using System.Data.Entity;
+using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -35,7 +36,7 @@ namespace SementesApplication
             }
             if (saveChangesError.GetValueOrDefault())
             {
-                ErrorMessage = "Delete failed. Try again";
+                ErrorMessage = "Could not perform Delete on record id: "+id;
             }
             return Page();
         }
@@ -59,8 +60,16 @@ namespace SementesApplication
                 await _context.SaveChangesAsync();
                 return RedirectToPage("./Index");
             }
-            catch (DbUpdateException /* ex */)
+            catch (DbUpdateException ex)
             {
+                StringBuilder sb = new StringBuilder();
+                sb.AppendLine(ErrorMessage);
+                sb.AppendLine(ex.ToString());
+
+                ErrorMessage = sb.ToString();
+                //Log the error (uncomment ex variable name and write a log.)
+                return RedirectToAction("./Delete",
+                                     new { id, saveChangesError = true });
                 //Log the error (uncomment ex variable name and write a log.)
                 return RedirectToAction("./Delete",
                                      new { id, saveChangesError = true });

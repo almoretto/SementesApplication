@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+﻿using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -18,8 +18,9 @@ namespace SementesApplication
 
         [BindProperty]
         public TeamSchedule TeamSchedule { get; set; }
+        public string  ErrorMessage { get; set; }
 
-        public async Task<IActionResult> OnGetAsync(int? id)
+        public async Task<IActionResult> OnGetAsync(int? id, bool? saveChangesError=false)
         {
             if (id == null)
             {
@@ -33,6 +34,10 @@ namespace SementesApplication
             {
                 return NotFound();
             }
+            if (saveChangesError.GetValueOrDefault())
+            {
+                ErrorMessage = "Coldn´t Delete de Record id: " + id;
+            }
             return Page();
         }
 
@@ -43,15 +48,32 @@ namespace SementesApplication
                 return NotFound();
             }
 
-            TeamSchedule = await _context.TeamSchedule.FindAsync(id);
+            var teamSchedule = await _context.TeamSchedule.FindAsync(id);
 
-            if (TeamSchedule != null)
+            try
+            {
+                _context.TeamSchedule.Remove(teamSchedule);
+                await _context.SaveChangesAsync();
+                return RedirectToPage("./Indes");
+            }
+            catch (DbUpdateException ex)
+            {
+                StringBuilder sb = new StringBuilder();
+                sb.AppendLine(ErrorMessage);
+                sb.AppendLine(ex.ToString());
+
+                ErrorMessage = sb.ToString();
+               
+                return RedirectToAction("./Delete",
+                    new { id, saveChangesError = true });
+            }
+            /*if (TeamSchedule != null)
             {
                 _context.TeamSchedule.Remove(TeamSchedule);
                 await _context.SaveChangesAsync();
             }
 
-            return RedirectToPage("./Index");
+            return RedirectToPage("./Index");*/
         }
     }
 }

@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace SementesApplication.Migrations
 {
-    public partial class DbCreate : Migration
+    public partial class Upgrade : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -25,7 +25,7 @@ namespace SementesApplication.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_AssistedEntities", x => x.EntityId);
+                    table.PrimaryKey("PK_Entity", x => x.EntityId);
                 });
 
             migrationBuilder.CreateTable(
@@ -58,7 +58,7 @@ namespace SementesApplication.Migrations
                 {
                     table.PrimaryKey("PK_Job", x => x.JobId);
                     table.ForeignKey(
-                        name: "FK_Job_AssistedEntities_EntityId",
+                        name: "FK_Job_Entity_EntityId",
                         column: x => x.EntityId,
                         principalTable: "Entity",
                         principalColumn: "EntityId",

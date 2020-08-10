@@ -14,71 +14,78 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Entity[0].EntityName)
+                @*@@Html.DisplayNameFor(model => model.Entities[0].EntityName)*@
+                <a asp-page="./Index" asp-route-sortOrder="@Model.NameSort">
+                    @Html.DisplayNameFor(model => model.Entities[0].EntityName)
+                </a>
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Entity[0].VisitDay)
+                @Html.DisplayNameFor(model => model.Entities[0].VisitDay)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Entity[0].VisitTime)
+                @Html.DisplayNameFor(model => model.Entities[0].VisitTime)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Entity[0].VisitDuration)
+                @Html.DisplayNameFor(model => model.Entities[0].VisitDuration)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Entity[0].VisitScale)
+                @Html.DisplayNameFor(model => model.Entities[0].VisitScale)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Entity[0].MaxVolunteer)
+                @Html.DisplayNameFor(model => model.Entities[0].MaxVolunteer)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Entity[0].Contact)
+                @*@Html.DisplayNameFor(model => model.Entities[0].Contact)*@
+                <a asp-page="./Index" asp-route-sortOrder="@Model.ContactSort">
+                    @Html.DisplayNameFor(model => model.Entities[0].Contact)
+                </a>
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Entity[0].Phone)
+                @Html.DisplayNameFor(model => model.Entities[0].Phone)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Entity[0].Email)
+                @Html.DisplayNameFor(model => model.Entities[0].Email)
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model.Entity) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.EntityName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.VisitDay)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.VisitTime)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.VisitDuration)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.VisitScale)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.MaxVolunteer)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Contact)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Phone)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Email)
-            </td>
-            <td>
-                <a asp-page="./Edit" asp-route-id="@item.EntityId">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.EntityId">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.EntityId">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model.Entities)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EntityName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.VisitDay)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.VisitTime)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.VisitDuration)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.VisitScale)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MaxVolunteer)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Contact)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Phone)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    <a asp-page="./Edit" asp-route-id="@item.EntityId">Edit</a> |
+                    <a asp-page="./Details" asp-route-id="@item.EntityId">Details</a> |
+                    <a asp-page="./Delete" asp-route-id="@item.EntityId">Delete</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>

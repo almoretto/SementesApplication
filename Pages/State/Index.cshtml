@@ -5,7 +5,7 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<h1>State Index</h1>
 
 <p>
     <a asp-page="Create">Create New</a>
@@ -13,7 +13,7 @@
 <form asp-page="./Index" method="get">
     <div class="form-actions no-color">
         <p>
-            Find by name:
+            Find by name or abreviation:
             <input type="text" name="SearchString" value="@Model.CurrentFilter" />
             <input type="submit" value="Search" class="btn btn-primary" /> |
             <a asp-page="./Index">Back to full List</a>
@@ -24,15 +24,15 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.State[0].StateId)
+                @Html.DisplayNameFor(model => model.States[0].StateId)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.State[0].UFAbreviation)
+                @Html.DisplayNameFor(model => model.States[0].UFAbreviation)
             </th>
             <th>
                 <a asp-page="./Index" asp-route-sortOrder="@Model.UFNameSort"
                    asp-route-currentFilter="@Model.CurrentFilter">
-                    @Html.DisplayNameFor(model => model.State[0].UFName)
+                    @Html.DisplayNameFor(model => model.States[0].UFName)
                 </a>
                 @*<a asp-page="./Index" asp-route-sortOrder="@Model.UFNameSort">
                         @Html.DisplayNameFor(model => model.State[0].UFName)
@@ -42,7 +42,7 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (var item in Model.State)
+        @foreach (var item in Model.States)
         {
             <tr>
                 <td>

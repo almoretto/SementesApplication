@@ -10,8 +10,8 @@ using SementesApplication.Data;
 namespace SementesApplication.Migrations
 {
     [DbContext(typeof(SementesApplicationContext))]
-    [Migration("20200730181414_DbCreate")]
-    partial class DbCreate
+    [Migration("20200810192625_Upgrade")]
+    partial class Upgrade
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

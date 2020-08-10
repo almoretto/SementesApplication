@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using SementesApplication.Data;
 
@@ -21,7 +20,7 @@ namespace SementesApplication
         public string CurrentFilter { get; set; }
         public string CurrentSort { get; set; }
 
-        public IList<State> State { get; set; }
+        //public IList<State> State { get; set; }
         public PaginatedList<State> States { get; set; }
 
         public async Task OnGetAsync(string sortOrder, string searchString, string currentFilter, int? pageIndex)
@@ -57,8 +56,8 @@ namespace SementesApplication
                     stateIQ = stateIQ.OrderBy(s => s.UFName);
                     break;
             }
-            int pageSize = 3;
-            State = await PaginatedList<State>.CreateAsync(
+            int pageSize = 5;
+            States = await PaginatedList<State>.CreateAsync(
                 stateIQ.AsNoTracking(), pageIndex ?? 1, pageSize);
             //State = await stateIQ.AsNoTracking().ToListAsync();
             //State = await _context.State.ToListAsync();

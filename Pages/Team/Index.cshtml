@@ -5,32 +5,66 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<h1>Team Index</h1>
 
 <p>
     <a asp-page="Create">Create New</a>
 </p>
+<form asp-page="./Index" method="get">
+    <div class="form-actions no-color">
+        <p>
+            Find by name:
+            <input type="text" name="SearchString" value="@Model.CurrentFilter" />
+            <input type="submit" value="Search" class="btn btn-primary" /> |
+            <a asp-page="./Index">Back to full List</a>
+        </p>
+    </div>
+</form>
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Team[0].Job)
+                <a asp-page="./Index" asp-route-sortOrder="@Model.DateSort"
+                   asp-route-currentFilter="@Model.CurrentFilter">
+                    @Html.DisplayNameFor(model => model.Teams[0].Job.JobDay)
+                </a>
             </th>
             <th></th>
+
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model.Team) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Job.JobId)
-            </td>
-            <td>
-                <a asp-page="./Edit" asp-route-id="@item.TeamId">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.TeamId">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.TeamId">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model.Teams)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Job.JobDay)
+                </td>
+                <td>
+                    <a asp-page="./Edit" asp-route-id="@item.TeamId">Edit</a> |
+                    <a asp-page="./Details" asp-route-id="@item.TeamId">Details</a> |
+                    <a asp-page="./Delete" asp-route-id="@item.TeamId">Delete</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
+@{
+    var prevDisabled = !Model.Teams.HasPreviousPage ? "disabled" : "";
+    var nextDisabled = !Model.Teams.HasNextPage ? "disabled" : "";
+}
+
+<a asp-page="./Index"
+   asp-route-sortOrder="@Model.CurrentSort"
+   asp-route-pageIndex="@(Model.Teams.PageIndex - 1)"
+   asp-route-currentFilter="@Model.CurrentFilter"
+   class="btn btn-primary @prevDisabled">
+    Previous
+</a>
+<a asp-page="./Index"
+   asp-route-sortOrder="@Model.CurrentSort"
+   asp-route-pageIndex="@(Model.Teams.PageIndex + 1)"
+   asp-route-currentFilter="@Model.CurrentFilter"
+   class="btn btn-primary @nextDisabled">
+    Next
+</a>

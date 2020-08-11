@@ -1,4 +1,4 @@
-﻿namespace SementesApplication
+﻿namespace SementesApplication.Models.enums
 {
     public enum ActionKind
     {

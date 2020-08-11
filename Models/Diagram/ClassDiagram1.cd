@@ -29,6 +29,9 @@
       <HashCode>AAAAAAAAACIAAAAAGEAAAIAAAAAAAAABAQAAMAAAAAA=</HashCode>
       <FileName>Models\Entity.cs</FileName>
     </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="Jobs" />
+    </ShowAsCollectionAssociation>
   </Class>
   <Class Name="SementesApplication.Job">
     <Position X="10" Y="1" Width="1.5" />
@@ -38,6 +41,7 @@
     </TypeIdentifier>
     <ShowAsAssociation>
       <Property Name="Entity" />
+      <Property Name="Team" />
     </ShowAsAssociation>
   </Class>
   <Class Name="SementesApplication.State">

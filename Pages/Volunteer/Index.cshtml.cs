@@ -38,7 +38,8 @@ namespace SementesApplication
             }
             CurrentFilter = searchString;
 
-            IQueryable<Volunteer> volunteerIQ = from s in _context.Volunteer where s.AddressId == s.Address.AddressId select s;
+            IQueryable<Volunteer> volunteerIQ = from s in _context.Volunteer 
+                                                where s.AddressId == s.Address.AddressId select s;
 
             if (!String.IsNullOrEmpty(searchString))
             {

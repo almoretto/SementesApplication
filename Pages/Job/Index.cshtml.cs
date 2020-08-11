@@ -19,7 +19,7 @@ namespace SementesApplication
         public string JobDaySort { get; set; }
         public string CurrentFilter { get; set; }
         public string CurrentSort { get; set; }
-        public PaginatedList<Job> Jobs { get;set; }
+        public PaginatedList<Job> Jobs { get; set; }
 
         public async Task OnGetAsync(string sortOrder,
             string currentFilter, string searchString, int? pageIndex)
@@ -39,9 +39,7 @@ namespace SementesApplication
 
             CurrentFilter = searchString;
 
-            IQueryable<Job> jobsIQ = from s in _context.Job
-                                             where s.EntityId== s.Entity.EntityId 
-                                             select s;
+            IQueryable<Job> jobsIQ = from s in _context.Job select s;
 
             if (!String.IsNullOrEmpty(searchString))
             {

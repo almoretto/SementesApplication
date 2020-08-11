@@ -1,5 +1,6 @@
-﻿namespace SementesApplication.Models.enums
+﻿namespace SementesApplication
 {
+
     public enum ActionKind
     {
         HumanizacaoHospitalar,

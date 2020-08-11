@@ -5,17 +5,28 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<h1>Entity Index</h1>
 
 <p>
     <a asp-page="Create">Create New</a>
 </p>
+<form asp-page="./Index" method="get">
+    <div class="form-actions no-color">
+        <p>
+            Find by name or contact:
+            <input type="text" name="SearchString" value="@Model.CurrentFilter" />
+            <input type="submit" value="Search" class="btn btn-primary" /> |
+            <a asp-page="./Index">Back to full List</a>
+        </p>
+    </div>
+</form>
 <table class="table">
     <thead>
         <tr>
             <th>
                 @*@@Html.DisplayNameFor(model => model.Entities[0].EntityName)*@
-                <a asp-page="./Index" asp-route-sortOrder="@Model.NameSort">
+                <a asp-page="./Index" asp-route-sortOrder="@Model.NameSort"
+                   asp-route-currentFilter="@Model.CurrentFilter">
                     @Html.DisplayNameFor(model => model.Entities[0].EntityName)
                 </a>
             </th>
@@ -36,7 +47,8 @@
             </th>
             <th>
                 @*@Html.DisplayNameFor(model => model.Entities[0].Contact)*@
-                <a asp-page="./Index" asp-route-sortOrder="@Model.ContactSort">
+                <a asp-page="./Index" asp-route-sortOrder="@Model.ContactSort"
+                   asp-route-currentFilter="@Model.CurrentFilter">
                     @Html.DisplayNameFor(model => model.Entities[0].Contact)
                 </a>
             </th>
@@ -89,3 +101,22 @@
         }
     </tbody>
 </table>
+@{
+    var prevDisabled = !Model.Entities.HasPreviousPage ? "disabled" : "";
+    var nextDisabled = !Model.Entities.HasNextPage ? "disabled" : "";
+}
+
+<a asp-page="./Index"
+   asp-route-sortOrder="@Model.CurrentSort"
+   asp-route-pageIndex="@(Model.Entities.PageIndex - 1)"
+   asp-route-currentFilter="@Model.CurrentFilter"
+   class="btn btn-primary @prevDisabled">
+    Previous
+</a>
+<a asp-page="./Index"
+   asp-route-sortOrder="@Model.CurrentSort"
+   asp-route-pageIndex="@(Model.Entities.PageIndex + 1)"
+   asp-route-currentFilter="@Model.CurrentFilter"
+   class="btn btn-primary @nextDisabled">
+    Next
+</a>

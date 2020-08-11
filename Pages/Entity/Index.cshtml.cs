@@ -20,16 +20,34 @@ namespace SementesApplication
         public string ContactSort { get; set; }
         public string CurrentFilter { get; set; }
         public string CurrentSort { get; set; }
-        public IList<Entity> Entities { get; set; }
+        public PaginatedList<Entity> Entities { get; set; }
 
-        public async Task OnGetAsync(string sortOrder)
+        public async Task OnGetAsync(string sortOrder,
+            string currentFilter, string searchString, int? pageIndex)
         {
+            CurrentSort = sortOrder;
+
             NameSort = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "name";
             ContactSort = String.IsNullOrEmpty(sortOrder) ? "cont_desc" : "";
 
+            if (searchString != null)
+            {
+                pageIndex = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
+
+            CurrentFilter = searchString;
+
             IQueryable<Entity> entitiesIQ = from s in _context.Entity
                                             select s;
-
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                entitiesIQ = entitiesIQ.Where(s => s.EntityName.Contains(searchString)
+                                       || s.Contact.Contains(searchString));
+            }
             switch (sortOrder)
             {
                 case "name_desc":
@@ -43,7 +61,9 @@ namespace SementesApplication
                     break;
             }
 
-            Entities = await entitiesIQ.AsNoTracking().ToListAsync();
+            int pageSize = 5;
+            Entities = await PaginatedList<Entity>.CreateAsync(
+                entitiesIQ.AsNoTracking(), pageIndex ?? 1, pageSize);
         }
     }
 }

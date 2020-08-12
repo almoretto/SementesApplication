@@ -24,6 +24,9 @@
     <thead>
         <tr>
             <th>
+                @Html.DisplayNameFor(model => model.Jobs[0].Entity.EntityName)
+            </th>
+            <th>
                 <a asp-page="./Index" asp-route-sortOrder="@Model.JobDaySort"
                    asp-route-currentFilter="@Model.CurrentFilter">
                     @Html.DisplayNameFor(model => model.Jobs[0].JobDay)
@@ -38,9 +41,7 @@
             <th>
                 @Html.DisplayNameFor(model => model.Jobs[0].MaxVolunteer)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Jobs[0].Entity)
-            </th>
+
             <th></th>
         </tr>
     </thead>
@@ -48,6 +49,9 @@
         @foreach (var item in Model.Jobs)
         {
             <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Entity.EntityName)
+                </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.JobDay)
                 </td>
@@ -59,9 +63,6 @@
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.MaxVolunteer)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Entity.EntityId)
                 </td>
                 <td>
                     <a asp-page="./Edit" asp-route-id="@item.JobId">Edit</a> |

@@ -39,7 +39,7 @@ namespace SementesApplication
 
             CurrentFilter = searchString;
 
-            IQueryable<Job> jobsIQ = from s in _context.Job select s;
+            IQueryable<Job> jobsIQ = from s in _context.Job  select s;
 
             if (!String.IsNullOrEmpty(searchString))
             {

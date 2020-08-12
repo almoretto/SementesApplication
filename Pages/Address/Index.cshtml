@@ -20,16 +20,16 @@
                 @Html.DisplayNameFor(model => model.Address[0].Designation)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Address[0].Number)
-            </th>
-            <th>
                 @Html.DisplayNameFor(model => model.Address[0].District)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Address[0].Complement)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Address[0].City)
+                @Html.DisplayNameFor(model => model.Address[0].City.CityName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Address[0].CEP)
             </th>
             <th></th>
         </tr>
@@ -44,16 +44,16 @@
                 @Html.DisplayFor(modelItem => item.Designation)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Number)
-            </td>
-            <td>
                 @Html.DisplayFor(modelItem => item.District)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Complement)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.City.CityId)
+                @Html.DisplayFor(modelItem => item.City.CityName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CEP)
             </td>
             <td>
                 <a asp-page="./Edit" asp-route-id="@item.AddressId">Edit</a> |

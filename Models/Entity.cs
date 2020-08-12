@@ -13,7 +13,7 @@ namespace SementesApplication
         [EnumDataType(typeof(DayOfWeek))]
         public DayOfWeek VisitDay { get; set; }
 
-        [DataType(DataType.Date)]
+        [DataType(DataType.Time)]
         public DateTime VisitTime { get; set; }
         public TimeSpan VisitDuration { get; set; }
 

@@ -34,11 +34,11 @@ namespace SementesApplication
                 emptyJob,
                 "Job",   // Prefix for form value.
                 s => s.JobDay, 
-                s => s.JobPeriod, 
-                s => s.MaxVolunteer, 
+                s => s.JobPeriod,  
                 s=>s.ActionKind, 
                 s=>s.EntityId))
             {
+                emptyJob.SetMaxVolunteer(emptyJob.Entity.MaxVolunteer);
                 _context.Job.Add(emptyJob);
                 await _context.SaveChangesAsync();
                 return RedirectToPage("./Index");

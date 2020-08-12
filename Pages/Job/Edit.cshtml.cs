@@ -11,15 +11,15 @@ namespace SementesApplication
     public class EditJob : PageModel
     {
         private readonly SementesApplicationContext _context;
-
+        
         public EditJob(SementesApplicationContext context)
         {
             _context = context;
         }
 
         [BindProperty]
-        public Job Job { get; set; }
-
+        public Job Jobs { get; set; }
+        
         public async Task<IActionResult> OnGetAsync(int? id)
         {
             if (id == null)
@@ -27,10 +27,11 @@ namespace SementesApplication
                 return NotFound();
             }
 
-            Job = await _context.Job
+            Jobs = await _context.Job
                 .Include(j => j.Entity).FirstAsync(m => m.JobId == id);
+           
 
-            if (Job == null)
+            if (Jobs == null)
             {
                 return NotFound();
             }
@@ -43,6 +44,7 @@ namespace SementesApplication
         public async Task<IActionResult> OnPostAsync(int id)
         {
             var jobToUpdate = await _context.Job.FindAsync(id);
+            var max = await _context.Entity.FindAsync(jobToUpdate.EntityId);
 
             if (!ModelState.IsValid)
             {
@@ -63,9 +65,9 @@ namespace SementesApplication
                     s=>s.JobDay,
                     s=>s.JobPeriod,
                     s=>s.ActionKind,
-                    s=>s.MaxVolunteer,
                     s=>s.EntityId))
                 {
+                    jobToUpdate.SetMaxVolunteer(max.MaxVolunteer);
                     await _context.SaveChangesAsync();
                     return RedirectToPage("./Index");
                 }
@@ -74,7 +76,7 @@ namespace SementesApplication
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!JobExists(Job.JobId))
+                if (!JobExists(Jobs.JobId))
                 {
                     return NotFound();
                 }
@@ -91,5 +93,6 @@ namespace SementesApplication
         {
             return _context.Job.Any(e => e.JobId == id);
         }
+       
     }
 }

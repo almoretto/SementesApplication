@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SementesApplication.Data;
 
 namespace SementesApplication.Migrations
 {
     [DbContext(typeof(SementesApplicationContext))]
-    partial class SementesApplicationContextModelSnapshot : ModelSnapshot
+    [Migration("20200812165423_AddressChabge3")]
+    partial class AddressChabge3
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -28,9 +30,6 @@ namespace SementesApplication.Migrations
 
                     b.Property<int>("AddressKind")
                         .HasColumnType("int");
-
-                    b.Property<string>("CEP")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("CityId")
                         .HasColumnType("int");

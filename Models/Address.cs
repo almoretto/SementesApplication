@@ -11,10 +11,11 @@ namespace SementesApplication
         [EnumDataType(typeof(AddressKind))]
         public AddressKind AddressKind { get; set; }
         public string Designation { get; set; }
-        public string  Number { get; set; }
+        //public string  Number { get; set; }
         public string District { get; set; }
         public string Complement { get; set; }
-        public string  DesignationGroup { get; private set; }
+        public string CEP { get; set; }
+        //public string  DesignationGroup { get; private set; }
 
         //Relationship One City has Many Address
         public int CityId { get; set; }
@@ -23,14 +24,7 @@ namespace SementesApplication
         //Relationship one Volunteer has one address
         public Volunteer  Volunteer { get; set; } //Navigation 1 to 1 with volunte
 
-        public void GroupAddress()
-        {
-            StringBuilder sb = new StringBuilder();
-            sb.Append(Designation);
-            sb.Append(", ");
-            sb.Append(Number);
-            DesignationGroup = sb.ToString();
-        }
+        
         
     }
 }

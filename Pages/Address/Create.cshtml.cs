@@ -47,17 +47,16 @@ namespace SementesApplication
                 "Address",   // Prefix for form value.
                 s => s.AddressKind,
                 s => s.Designation,
-                s => s.Number,
                 s => s.District,
                 s => s.Complement,
+                s=>s.CEP,
                 s => s.CityId))
 
             {
                 _context.Address.Add(emptyAddress);
-                emptyAddress.GroupAddress();
                 await _context.SaveChangesAsync();
                 return RedirectToPage("./Index");
-               
+
             }
 
             return Page();

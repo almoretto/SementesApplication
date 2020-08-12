@@ -5,9 +5,7 @@
     ViewData["Title"] = "Create";
 }
 
-<h1>Create</h1>
-
-<h4>Job</h4>
+<h4>Create Job</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -30,11 +28,6 @@
                     <option value="">Choose a Type</option>
                 </select>
                 <span asp-validation-for="Job.ActionKind" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Job.MaxVolunteer" class="control-label"></label>
-                <input asp-for="Job.MaxVolunteer" class="form-control" />
-                <span asp-validation-for="Job.MaxVolunteer" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Job.EntityId" class="control-label"></label>

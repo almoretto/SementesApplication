@@ -28,6 +28,7 @@ namespace SementesApplication
 
             VNameSort = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
             VBirthDateSort = sortOrder == "Date" ? "date_desc" : "Date";
+
             if (searchString != null)
             {
                 pageIndex = 1;
@@ -39,7 +40,7 @@ namespace SementesApplication
             CurrentFilter = searchString;
 
             IQueryable<Volunteer> volunteerIQ = from s in _context.Volunteer 
-                                                where s.AddressId == s.Address.AddressId select s;
+                                                 select s;
 
             if (!String.IsNullOrEmpty(searchString))
             {

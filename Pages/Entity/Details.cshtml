@@ -66,37 +66,7 @@
             @Html.DisplayFor(model => model.Entity.Email)
         </dd>
     </dl>
-    <dl class="row">
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Entity.Jobs)
-        </dt>
-        <dd class="col-sm-10">
-            <table class="table">
-                <tr>
-                    <th>Course Title</th>
-                    <th>Grade</th>
-                </tr>
-                @foreach (var item in Model.Entity.Jobs)
-                {
-                    <tr>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.JobDay)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.JobPeriod)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.ActionKind)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.MaxVolunteer)
-                        </td>
-                    </tr>
-                }
-            </table>
-        </dd>
-    </dl>
-</div>
+    
 <div>
     <a asp-page="./Edit" asp-route-id="@Model.Entity.EntityId">Edit</a> |
     <a asp-page="./Index">Back to List</a>

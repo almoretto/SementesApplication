@@ -24,9 +24,9 @@ namespace SementesApplication
         //Relation one Job has one Team
         public Team Team { get; set; }
        
-        public void SetMaxVolunteer()
+        public void SetMaxVolunteer(int max)
         {
-            MaxVolunteer = Entity.MaxVolunteer;
+            MaxVolunteer = max;
         }
     }
 }

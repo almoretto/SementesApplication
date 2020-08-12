@@ -5,39 +5,35 @@
     ViewData["Title"] = "Edit";
 }
 
-<h1>Edit</h1>
 
-<h4>Job</h4>
+<h4>Edit Job</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
         <form method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="Job.JobId" />
+            <input type="hidden" asp-for="Jobs.JobId" />
             <div class="form-group">
-                <label asp-for="Job.JobDay" class="control-label"></label>
-                <input asp-for="Job.JobDay" class="form-control" />
-                <span asp-validation-for="Job.JobDay" class="text-danger"></span>
+                <label asp-for="Jobs.JobDay" class="control-label"></label>
+                <input asp-for="Jobs.JobDay" class="form-control" />
+                <span asp-validation-for="Jobs.JobDay" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Job.JobPeriod" class="control-label"></label>
-                <input asp-for="Job.JobPeriod" class="form-control" />
-                <span asp-validation-for="Job.JobPeriod" class="text-danger"></span>
+                <label asp-for="Jobs.JobPeriod" class="control-label"></label>
+                <input asp-for="Jobs.JobPeriod" class="form-control" />
+                <span asp-validation-for="Jobs.JobPeriod" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Job.ActionKind" class="control-label"></label>
-                <select asp-for="Job.ActionKind" class="form-control"></select>
-                <span asp-validation-for="Job.ActionKind" class="text-danger"></span>
+                <label asp-for="Jobs.ActionKind" class="control-label"></label>
+                <select asp-for="Jobs.ActionKind" asp-items="Html.GetEnumSelectList<ActionKind>()" class="form-control">
+                    <option value="">Choose a Type</option>
+                </select>
+                <span asp-validation-for="Jobs.ActionKind" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Job.MaxVolunteer" class="control-label"></label>
-                <input asp-for="Job.MaxVolunteer" class="form-control" />
-                <span asp-validation-for="Job.MaxVolunteer" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Job.EntityId" class="control-label"></label>
-                <select asp-for="Job.EntityId" class="form-control" asp-items="ViewBag.EntityId"></select>
-                <span asp-validation-for="Job.EntityId" class="text-danger"></span>
+                <label asp-for="Jobs.EntityId" class="control-label"></label>
+                <select asp-for="Jobs.EntityId" class="form-control" asp-items="ViewBag.EntityId"></select>
+                <span asp-validation-for="Jobs.EntityId" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />

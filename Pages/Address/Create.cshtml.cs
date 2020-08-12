@@ -21,15 +21,15 @@ namespace SementesApplication
         public IActionResult OnGet()
         {
             ViewData["CityId"] = new SelectList(_context.City, "CityId", "CityName");
-           /*
-            var addressKind = new List<ConvertEnum>();
-            foreach (AddressKind addKind in Enum.GetValues(typeof(AddressKind)))
-                addressKind.Add(new ConvertEnum
-                {
-                    Value = (int)addKind,
-                    Text = addKind.ToString()
-                });
-            ViewBag.AddressKind = addressKind;*/
+            /*
+             var addressKind = new List<ConvertEnum>();
+             foreach (AddressKind addKind in Enum.GetValues(typeof(AddressKind)))
+                 addressKind.Add(new ConvertEnum
+                 {
+                     Value = (int)addKind,
+                     Text = addKind.ToString()
+                 });
+             ViewBag.AddressKind = addressKind;*/
             return Page();
         }
 
@@ -51,12 +51,15 @@ namespace SementesApplication
                 s => s.District,
                 s => s.Complement,
                 s => s.CityId))
+
             {
                 _context.Address.Add(emptyAddress);
+                emptyAddress.GroupAddress();
                 await _context.SaveChangesAsync();
                 return RedirectToPage("./Index");
+               
             }
-            
+
             return Page();
         }
     }

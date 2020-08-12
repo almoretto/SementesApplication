@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.Text;
 
 namespace SementesApplication
 {
@@ -13,7 +14,8 @@ namespace SementesApplication
         public string  Number { get; set; }
         public string District { get; set; }
         public string Complement { get; set; }
-        
+        public string  DesignationGroup { get; private set; }
+
         //Relationship One City has Many Address
         public int CityId { get; set; }
         public City City { get; set; }
@@ -21,6 +23,14 @@ namespace SementesApplication
         //Relationship one Volunteer has one address
         public Volunteer  Volunteer { get; set; } //Navigation 1 to 1 with volunte
 
+        public void GroupAddress()
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append(Designation);
+            sb.Append(", ");
+            sb.Append(Number);
+            DesignationGroup = sb.ToString();
+        }
         
     }
 }

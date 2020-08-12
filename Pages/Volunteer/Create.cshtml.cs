@@ -14,11 +14,12 @@ namespace SementesApplication
         {
             _context = context;
         }
-
+        
         public IActionResult OnGet()
         {
-        ViewData["AddressId"] = new SelectList(_context.Address, "AddressId", "Designation");
-            return Page();
+
+            ViewData["AddressId"] = new SelectList(_context.Address, "AddressId", "Designation");
+            return Page(); /*_context.Address, "AddressId", "Designation"*/
         }
 
         [BindProperty]

@@ -46,7 +46,7 @@ namespace SementesApplication
                 s=>s.VSocialMidiaProfile))
                 
             {
-                emptySVolunteer.AgeCalculator();
+                //emptySVolunteer.AgeCalculator();
                 _context.Volunteer.Add(emptySVolunteer);
                 await _context.SaveChangesAsync();
                 return RedirectToPage("./Index");

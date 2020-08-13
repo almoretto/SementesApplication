@@ -16,6 +16,7 @@ namespace SementesApplication
         {
             _context = context;
         }
+        public string NameSort { get; set; }
         public string JobDaySort { get; set; }
         public string CurrentFilter { get; set; }
         public string CurrentSort { get; set; }
@@ -26,6 +27,7 @@ namespace SementesApplication
         {
             CurrentSort = sortOrder;
 
+            NameSort = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
             JobDaySort = sortOrder == "Date" ? "date_desc" : "Date";
 
             if (searchString != null)
@@ -39,7 +41,8 @@ namespace SementesApplication
 
             CurrentFilter = searchString;
 
-            IQueryable<Job> jobsIQ = from s in _context.Job  select s;
+            IQueryable<Job> jobsIQ = from s in _context.Job
+                                     select s;
 
             if (!String.IsNullOrEmpty(searchString))
             {
@@ -48,6 +51,9 @@ namespace SementesApplication
 
             switch (sortOrder)
             {
+                case "name_desc":
+                    jobsIQ = jobsIQ.OrderByDescending(s => s.Entity.EntityName);
+                    break;
                 case "date_desc":
                     jobsIQ = jobsIQ.OrderByDescending(s => s.JobDay);
                     break;

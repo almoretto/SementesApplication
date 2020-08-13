@@ -27,21 +27,5 @@ namespace SementesApplication.Data
         public DbSet<Volunteer> Volunteer { get; set; }
 
         
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
-
-
-
-
-            /*
-            modelBuilder.Entity<City>()
-                .HasOne(p => p.State)
-                .WithMany(b => b.Cities)
-                .HasForeignKey(p => p.State.StateId);
-            modelBuilder.Entity<Address>()
-                .HasOne(p => p.City)
-                .WithMany(b => b.Addresses)
-                .HasForeignKey(p => p.City.CityID);*/
-        }
     }
 }

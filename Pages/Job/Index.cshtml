@@ -8,7 +8,8 @@
 <h1>Job Index</h1>
 
 <p>
-    <a asp-page="Create">Create New</a>
+    <a asp-page="Create">Create New |</a>
+    <a asp-page="/Team/Index">Team</a>
 </p>
 <form asp-page="./Index" method="get">
     <div class="form-actions no-color">
@@ -24,7 +25,10 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Jobs[0].Entity.EntityName)
+                <a asp-page="./Index" asp-route-sortOrder="@Model.NameSort"
+                   asp-route-currentFilter="@Model.CurrentFilter">
+                    @Html.DisplayNameFor(model => model.Jobs[0].Entity.EntityName)
+                </a>
             </th>
             <th>
                 <a asp-page="./Index" asp-route-sortOrder="@Model.JobDaySort"

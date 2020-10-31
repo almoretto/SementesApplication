@@ -64,7 +64,7 @@ namespace SementesApplication
                     s => s.Designation,
                     s => s.Complement,
                     s => s.District,
-                    s=>s.CEP,
+                    s=>s.ZipCode,
                     s => s.CityId))
                 {
                     await _context.SaveChangesAsync();

@@ -68,8 +68,7 @@ namespace SementesApplication
                 return RedirectToAction("./Delete",
                                      new { id, saveChangesError = true });
                 //Log the error (uncomment ex variable name and write a log.)
-                return RedirectToAction("./Delete",
-                    new { id, saveChangesError = true });
+               
             }
             /*if (Team != null)
             {

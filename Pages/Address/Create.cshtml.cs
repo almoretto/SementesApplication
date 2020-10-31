@@ -3,9 +3,6 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using SementesApplication.Data;
-using SementesApplication.Models.enums;
-using System.Collections.Generic;
-using System;
 
 namespace SementesApplication
 {
@@ -49,7 +46,7 @@ namespace SementesApplication
                 s => s.Designation,
                 s => s.District,
                 s => s.Complement,
-                s=>s.CEP,
+                s=>s.ZipCode,
                 s => s.CityId))
 
             {

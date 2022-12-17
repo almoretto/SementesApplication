@@ -31,7 +31,7 @@ namespace SementesApplication.Migrations
                     b.Property<int>("AddressKind")
                         .HasColumnType("int");
 
-                    b.Property<string>("CEP")
+                    b.Property<string>("ZipCode")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("CityId")

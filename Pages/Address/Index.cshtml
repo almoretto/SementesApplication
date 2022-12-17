@@ -29,7 +29,7 @@
                 @Html.DisplayNameFor(model => model.Address[0].City.CityName)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Address[0].CEP)
+                @Html.DisplayNameFor(model => model.Address[0].ZipCode)
             </th>
             <th></th>
         </tr>
@@ -53,7 +53,7 @@
                 @Html.DisplayFor(modelItem => item.City.CityName)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.CEP)
+                @Html.DisplayFor(modelItem => item.ZipCode)
             </td>
             <td>
                 <a asp-page="./Edit" asp-route-id="@item.AddressId">Edit</a> |

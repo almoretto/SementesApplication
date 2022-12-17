@@ -7,7 +7,7 @@ namespace SementesApplication.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.AddColumn<string>(
-                name: "CEP",
+                name: "ZipCode",
                 table: "Address",
                 nullable: true);
         }
@@ -15,7 +15,7 @@ namespace SementesApplication.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropColumn(
-                name: "CEP",
+                name: "ZipCode",
                 table: "Address");
         }
     }
